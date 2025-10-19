@@ -97,3 +97,122 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# ============================================
+# 🔹 PROYECTO "EL ECO DE TUS DECISIONES"
+# Ignora archivos generados automáticamente
+# Unity + React + Node.js + Express + Python + MySQL
+# ============================================
+
+# ------------------------------
+# 🕹️ UNITY (Videojuego)
+# ------------------------------
+/videojuego/Library/
+/videojuego/Temp/
+/videojuego/Obj/
+/videojuego/Build/
+/videojuego/Builds/
+/videojuego/Logs/
+/videojuego/UserSettings/
+/videojuego/MemoryCaptures/
+/videojuego/Recordings/
+/videojuego/.vs/
+/videojuego/.idea/
+/videojuego/*.csproj
+/videojuego/*.unityproj
+/videojuego/*.sln
+/videojuego/*.user
+/videojuego/*.pidb
+/videojuego/*.booproj
+/videojuego/*.svd
+/videojuego/*.pdb
+/videojuego/.vscode/
+/videojuego/ProjectSettings/EditorBuildSettings.asset
+
+# ------------------------------
+# 💻 REACT (Portal Frontend)
+/portal/node_modules/
+/portal/.next/
+/portal/build/
+/portal/dist/
+/portal/.env
+/portal/.cache
+/portal/package-lock.json
+/portal/yarn.lock
+/portal/.DS_Store
+/portal/.eslintcache
+
+# ------------------------------
+# ⚙️ NODE.JS / EXPRESS (Backend)
+/backend/node_modules/
+/backend/.env
+/backend/logs/
+/backend/npm-debug.log*
+/backend/yarn-debug.log*
+/backend/yarn-error.log*
+/backend/package-lock.json
+/backend/.DS_Store
+/backend/.vscode/
+/backend/dist/
+/backend/tmp/
+
+# ------------------------------
+# 🧠 PYTHON (Machine Learning)
+/ml/__pycache__/
+/ml/.ipynb_checkpoints/
+/ml/*.pyc
+/ml/*.pyo
+/ml/.env
+/ml/.venv
+/ml/venv/
+/ml/.vscode/
+/ml/env/
+/ml/.DS_Store
+/ml/models/*.pkl
+/ml/datasets/*.csv
+/ml/logs/
+/ml/__init__.py
+
+# ------------------------------
+# 🗄️ MYSQL / BASE DE DATOS
+/database/*.bak
+/database/*.log
+/database/*.sql~ 
+/database/temp/
+/database/.DS_Store
+
+# ------------------------------
+# 🧩 SISTEMA GENERAL
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+Thumbs.db
+ehthumbs.db
+.DS_Store
+.env
+.vscode/
+.idea/
+*.iml
+
+# ------------------------------
+# 🚀 DEPLOYMENT / BUILDS
+*.zip
+*.rar
+*.tar
+*.gz
+*.7z
+*.iso
+/build/
+/dist/
+/deploy/
+/coverage/
+
+# ------------------------------
+# 🧰 DOCUMENTACIÓN LOCAL
+*.docx
+*.pdf
+*.xlsx
+*.pptx
