@@ -98,37 +98,6 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
-# ============================================
-# 🔹 PROYECTO "EL ECO DE TUS DECISIONES"
-# Ignora archivos generados automáticamente
-# Unity + React + Node.js + Express + Python + MySQL
-# ============================================
-
-# ------------------------------
-# 🕹️ UNITY (Videojuego)
-# ------------------------------
-/videojuego/Library/
-/videojuego/Temp/
-/videojuego/Obj/
-/videojuego/Build/
-/videojuego/Builds/
-/videojuego/Logs/
-/videojuego/UserSettings/
-/videojuego/MemoryCaptures/
-/videojuego/Recordings/
-/videojuego/.vs/
-/videojuego/.idea/
-/videojuego/*.csproj
-/videojuego/*.unityproj
-/videojuego/*.sln
-/videojuego/*.user
-/videojuego/*.pidb
-/videojuego/*.booproj
-/videojuego/*.svd
-/videojuego/*.pdb
-/videojuego/.vscode/
-/videojuego/ProjectSettings/EditorBuildSettings.asset
-
 # ------------------------------
 # 💻 REACT (Portal Frontend)
 /portal/node_modules/
