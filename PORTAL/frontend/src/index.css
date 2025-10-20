@@ -1,0 +1,48 @@
+/* Reset general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fondo blanco y fuente legible */
+body {
+  background-color: #ffffff;
+  color: #222222;
+  font-family: 'Inter', Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navegación superior */
+nav {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Enlaces de navegación */
+nav a {
+  color: #3366cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Contenedor principal */
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Títulos */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
