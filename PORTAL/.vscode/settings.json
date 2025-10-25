@@ -1,0 +1,20 @@
+{
+  // 💅 Formato automático y estilo del código
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.autoSave": "onWindowChange",
+
+  // 🧩 Terminal predeterminada
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+
+  // 📜 Habilita ESLint y Prettier para JavaScript/React
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // 🪶 Activa resaltado de variables de entorno (.env)
+  "files.associations": {
+    "*.env": "dotenv"
+  }
+}
