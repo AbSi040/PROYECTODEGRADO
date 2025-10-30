@@ -1,23 +1,23 @@
 Using pre-set license
 Built from '2022.3/staging' branch; Version is '2022.3.62f1 (4af31df58517) revision 4911901'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 11  (10.0.22631) 64bit CoreSingleLanguage' Language: 'es' Physical Memory: 16021 MB
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 16311 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
-D:\Program Files\Unity INstall\2022.3.62f1\Editor\Unity.exe
+E:\Program Files\Unity Hub\Editor\2022.3.62f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-D:/ABRIL SIERRA/Descargas/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO
+F:/Escritorio/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-45767
-Successfully changed project path to: D:/ABRIL SIERRA/Descargas/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO
-D:/ABRIL SIERRA/Descargas/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO
+63928
+Successfully changed project path to: F:/Escritorio/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO
+F:/Escritorio/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -49,68 +49,75 @@ D:/ABRIL SIERRA/Descargas/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [20188]  Target information:
+Player connection [32032]  Target information:
 
-Player connection [20188]  * "[IP] 192.168.223.192 [Port] 0 [Flags] 2 [Guid] 18244102 [EditorId] 18244102 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-MVEF6P33) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [32032]  * "[IP] 192.168.0.4 [Port] 0 [Flags] 2 [Guid] 1186636356 [EditorId] 1186636356 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-I2AGRN9) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [20188] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [20188] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [32032] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [32032] Host joined alternative multi-casting on [225.0.0.222:34997]...
 Input System module state changed to: Initialized.
-[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
-Refreshing native plugins compatible for Editor in 5.59 ms, found 3 plugins.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+Refreshing native plugins compatible for Editor in 4.99 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.62f1 (4af31df58517)
-[Subsystems] Discovering subsystems at path D:/Program Files/Unity INstall/2022.3.62f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/ABRIL SIERRA/Descargas/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO/Assets
+[Subsystems] Discovering subsystems at path E:/Program Files/Unity Hub/Editor/2022.3.62f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/Escritorio/PROYECTODEGRADO/PROYECTODEGRADO/VIDEOJUEGO/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3050 Laptop GPU (ID=0x25a2)
+    Renderer: NVIDIA GeForce RTX 3050 (ID=0x2582)
     Vendor:   NVIDIA
-    VRAM:     3964 MB
-    Driver:   32.0.15.8088
+    VRAM:     8042 MB
+    Driver:   32.0.15.8142
 Initialize mono
-Mono path[0] = 'D:/Program Files/Unity INstall/2022.3.62f1/Editor/Data/Managed'
-Mono path[1] = 'D:/Program Files/Unity INstall/2022.3.62f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'D:/Program Files/Unity INstall/2022.3.62f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56788
+Mono path[0] = 'E:/Program Files/Unity Hub/Editor/2022.3.62f1/Editor/Data/Managed'
+Mono path[1] = 'E:/Program Files/Unity Hub/Editor/2022.3.62f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'E:/Program Files/Unity Hub/Editor/2022.3.62f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56624
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: D:/Program Files/Unity INstall/2022.3.62f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002529 seconds.
-- Loaded All Assemblies, in  0.368 seconds
+Register platform support module: E:/Program Files/Unity Hub/Editor/2022.3.62f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: E:/Program Files/Unity Hub/Editor/2022.3.62f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: E:/Program Files/Unity Hub/Editor/2022.3.62f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: E:/Program Files/Unity Hub/Editor/2022.3.62f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.006500 seconds.
+- Loaded All Assemblies, in  0.378 seconds
+Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 233 ms
+Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.221 seconds
-Domain Reload Profiling: 589ms
-	BeginReloadAssembly (116ms)
+- Finished resetting the current domain, in  0.528 seconds
+Domain Reload Profiling: 907ms
+	BeginReloadAssembly (123ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (36ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (45ms)
-	LoadAllAssembliesAndSetupDomain (160ms)
-		LoadAssemblies (117ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (50ms)
+	LoadAllAssembliesAndSetupDomain (158ms)
+		LoadAssemblies (123ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (157ms)
-			TypeCache.Refresh (156ms)
+		AnalyzeDomain (155ms)
+			TypeCache.Refresh (153ms)
 				TypeCache.ScanAssembly (139ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (221ms)
+	FinalizeReload (529ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (182ms)
+		SetupLoadedEditorAssemblies (483ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (6ms)
-			SetLoadedEditorAssemblies (6ms)
+			InitializePlatformSupportModulesInManaged (311ms)
+			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (126ms)
-			ProcessInitializeOnLoadMethodAttributes (41ms)
+			ProcessInitializeOnLoadAttributes (120ms)
+			ProcessInitializeOnLoadMethodAttributes (44ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -119,50 +126,53 @@ Domain Reload Profiling: 589ms
 Worker process is ready to serve import requests
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.522 seconds
+- Loaded All Assemblies, in  0.617 seconds
+Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.419 seconds
-Domain Reload Profiling: 941ms
-	BeginReloadAssembly (148ms)
+- Finished resetting the current domain, in  0.666 seconds
+Domain Reload Profiling: 1283ms
+	BeginReloadAssembly (161ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
+		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (18ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (31ms)
-	LoadAllAssembliesAndSetupDomain (307ms)
-		LoadAssemblies (252ms)
+		CreateAndSetChildDomain (21ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (376ms)
+		LoadAssemblies (304ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (148ms)
-			TypeCache.Refresh (126ms)
-				TypeCache.ScanAssembly (114ms)
-			ScanForSourceGeneratedMonoScriptInfo (16ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (420ms)
+		AnalyzeDomain (176ms)
+			TypeCache.Refresh (155ms)
+				TypeCache.ScanAssembly (140ms)
+			ScanForSourceGeneratedMonoScriptInfo (14ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (666ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (315ms)
+		SetupLoadedEditorAssemblies (529ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (2ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (41ms)
-			ProcessInitializeOnLoadAttributes (251ms)
-			ProcessInitializeOnLoadMethodAttributes (15ms)
+			BeforeProcessingInitializeOnLoad (49ms)
+			ProcessInitializeOnLoadAttributes (442ms)
+			ProcessInitializeOnLoadMethodAttributes (17ms)
 			AfterProcessingInitializeOnLoad (2ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (5ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 2.52 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
+Refreshing native plugins compatible for Editor in 1.63 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3246 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 19 unused Assets / (54.6 KB). Loaded Objects now: 3713.
-Memory consumption went from 121.4 MB to 121.4 MB.
-Total: 2.750700 ms (FindLiveObjects: 0.232000 ms CreateObjectMapping: 0.078000 ms MarkObjects: 2.370500 ms  DeleteObjects: 0.069200 ms)
+Unloading 3247 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 19 unused Assets / (54.5 KB). Loaded Objects now: 3716.
+Memory consumption went from 121.7 MB to 121.6 MB.
+Total: 3.326600 ms (FindLiveObjects: 0.250200 ms CreateObjectMapping: 0.149400 ms MarkObjects: 2.857300 ms  DeleteObjects: 0.068700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -180,536 +190,256 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 11159.106061 seconds.
-  path: Assets/Scripts
-  artifactKey: Guid(6930cb32c982fbc43934d768e5823489) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts using Guid(6930cb32c982fbc43934d768e5823489) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '2518692fd2343b6eee3931ca8d1a820a') in 0.002538 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 35.922963 seconds.
-  path: Assets/Scenes
-  artifactKey: Guid(34bb2b273578ffa4c9a137d971d77c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(34bb2b273578ffa4c9a137d971d77c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '2ac68e5b41f7810238324bd64ed55188') in 0.001225 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 58.722910 seconds.
-  path: Assets/Prefabs
-  artifactKey: Guid(bdf864ffb68128f4c8b6997a2084bd5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs using Guid(bdf864ffb68128f4c8b6997a2084bd5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'd214ad79037170f46b17ab218a263e47') in 0.001066 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 10.428805 seconds.
-  path: Assets/Models
-  artifactKey: Guid(2bc5dfa501ad82943b01ea43b8ed3bfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models using Guid(2bc5dfa501ad82943b01ea43b8ed3bfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '0e864486075a3e2ac83539b397c69eae') in 0.001052 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 13.723141 seconds.
-  path: Assets/Materials
-  artifactKey: Guid(9d2c37731d4f74e4b90b1d0c5f340fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials using Guid(9d2c37731d4f74e4b90b1d0c5f340fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '4f57ea6fcf089c95e4542edc6c41e28a') in 0.000993 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 28.184618 seconds.
-  path: Assets/Textures
-  artifactKey: Guid(9c3becba20ef4e44692bad309038df07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures using Guid(9c3becba20ef4e44692bad309038df07) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '47d00be1be564607c0ab144688a7ae82') in 0.000451 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 20.075399 seconds.
-  path: Assets/Audio
-  artifactKey: Guid(c60567ab7107f9745b9dc2d87620088a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio using Guid(c60567ab7107f9745b9dc2d87620088a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '4565bdc90f1abfd088941df0170fdaa0') in 0.000977 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 10.993017 seconds.
-  path: Assets/Animations
-  artifactKey: Guid(2b8ce8f15a3aa92488a911298258cc9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations using Guid(2b8ce8f15a3aa92488a911298258cc9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '2149469c65c83ec1ff20b9d6a857da85') in 0.000998 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 89.804233 seconds.
-  path: Assets/Scenes/LoginScene.unity
-  artifactKey: Guid(6b33c278efa34d1498e0d7eaf24e9696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/LoginScene.unity using Guid(6b33c278efa34d1498e0d7eaf24e9696) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '2d71ad8eae24bccc47fcb46c565e67b7') in 0.000899 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 18.209901 seconds.
-  path: Assets/Scenes/RegisterScene.unity
-  artifactKey: Guid(898b4a19c33bcfa48879b7d41a8e41b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/RegisterScene.unity using Guid(898b4a19c33bcfa48879b7d41a8e41b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'e1e6982fbdf7c5d9514a177091a53ed1') in 0.001042 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 15.283231 seconds.
-  path: Assets/Scenes/New Folder
-  artifactKey: Guid(8da0b7521baa9904abc1073008252ef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New Folder using Guid(8da0b7521baa9904abc1073008252ef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'fb89feb5ca51e1840c4789c2e883b80f') in 0.001032 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 10.852623 seconds.
-  path: Assets/Scenes/MainMenu.unity
-  artifactKey: Guid(ee4bbb310f8a3bd47948a70496b56470) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MainMenu.unity using Guid(ee4bbb310f8a3bd47948a70496b56470) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '6e654c391800f187dafa9230fe213627') in 0.001095 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 12.361633 seconds.
-  path: Assets/Scenes/MainMenuScene.unity
-  artifactKey: Guid(ee4bbb310f8a3bd47948a70496b56470) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MainMenuScene.unity using Guid(ee4bbb310f8a3bd47948a70496b56470) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'e6c9d4c1fa70b544336e3513b240af1f') in 0.001134 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 20.827819 seconds.
-  path: Assets/Scenes/Story1Scene.unity
-  artifactKey: Guid(eb8282d8863fa7340991a056ad7904db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Story1Scene.unity using Guid(eb8282d8863fa7340991a056ad7904db) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'e8a8e1314c22c14354adba5a981f00bc') in 0.000988 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 14.215658 seconds.
-  path: Assets/Scenes/Story2Scene.unity
-  artifactKey: Guid(afef8f58346c8f24cb557d4c65fcb5cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Story2Scene.unity using Guid(afef8f58346c8f24cb557d4c65fcb5cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '420773b21b32f320aceffe403e7e7711') in 0.001174 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 10.683196 seconds.
-  path: Assets/Scenes/Story3Scene.unity
-  artifactKey: Guid(4de8d5d0d2f50ca4b848d367a9aa8d86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Story3Scene.unity using Guid(4de8d5d0d2f50ca4b848d367a9aa8d86) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '5cacdaaaa5874df2f25543d2bf1bca1c') in 0.001050 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 8.653487 seconds.
-  path: Assets/Scenes/Story4Scene.unity
-  artifactKey: Guid(ad5969c3f72ca9c4e8a3b182f49c6dda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Story4Scene.unity using Guid(ad5969c3f72ca9c4e8a3b182f49c6dda) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '0e47396f6fe7c7c9bfcb6c898909cfca') in 0.001078 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 88.090497 seconds.
-  path: Assets/Scenes/EndScene.unity
-  artifactKey: Guid(67e69f68bbae2f449bf607ebab22dbbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/EndScene.unity using Guid(67e69f68bbae2f449bf607ebab22dbbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '25434428922bf33973d921a73b4d3078') in 0.000987 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 52.539931 seconds.
-  path: Assets/Scripts/UI
-  artifactKey: Guid(448f6cd77e2d39d4db8100303f64bc9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UI using Guid(448f6cd77e2d39d4db8100303f64bc9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'f75fbd4f050c23cebc60349746d89bb4') in 0.001218 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 7.581107 seconds.
-  path: Assets/Scripts/Game
-  artifactKey: Guid(665c48993441b0046bddd336453879df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Game using Guid(665c48993441b0046bddd336453879df) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'b3190cfd101c473fcf5945637f93963e') in 0.001037 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 6.892165 seconds.
-  path: Assets/Scripts/System
-  artifactKey: Guid(4e3ca5abbc2514d4eb19880bbf4a15fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/System using Guid(4e3ca5abbc2514d4eb19880bbf4a15fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '725aa6c2afbdafeb084161e4aee93ada') in 0.001013 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 9.732639 seconds.
-  path: Assets/Scripts/Portal
-  artifactKey: Guid(4e3ca5abbc2514d4eb19880bbf4a15fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Portal using Guid(4e3ca5abbc2514d4eb19880bbf4a15fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '694122a565d141801cf54b87774f599f') in 0.001052 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 328.706110 seconds.
+  Time since last request: 4847393.174695 seconds.
   path: Assets/Models/Story1
   artifactKey: Guid(a1cc6f92eecaebe46b1d59bd79b10693) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story1 using Guid(a1cc6f92eecaebe46b1d59bd79b10693) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '186c87bcbbbcef8c6d93c9ff79bba3db') in 0.000451 seconds
+Start importing Assets/Models/Story1 using Guid(a1cc6f92eecaebe46b1d59bd79b10693) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '206697cec57745a43ba49a39de22026a') in 0.007581 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 5.539344 seconds.
-  path: Assets/Models/Story2
-  artifactKey: Guid(9217e645150ad234fbb4107f247dbbe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story2 using Guid(9217e645150ad234fbb4107f247dbbe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'e285951766652100734fe30ab395bb3f') in 0.001144 seconds
+  Time since last request: 0.695596 seconds.
+  path: Assets/Models/Story1/Autos
+  artifactKey: Guid(26d9b1910ecc23249a7886d94518cb95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos using Guid(26d9b1910ecc23249a7886d94518cb95) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '09567e49348cfda7edf9ab00448ade34') in 0.000392 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 5.123282 seconds.
-  path: Assets/Models/Story3
-  artifactKey: Guid(e9a07debf7856e042b76e6c937a7fafc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story3 using Guid(e9a07debf7856e042b76e6c937a7fafc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '79d3995aa3aee1435c09915cb3741e8a') in 0.001173 seconds
+  Time since last request: 30.517132 seconds.
+  path: Assets/Models/Story1/Autos/Auto1.fbx
+  artifactKey: Guid(35e142b6ad467f944ac6dc28430de2b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto1.fbx using Guid(35e142b6ad467f944ac6dc28430de2b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'de14f9c406735bddd3ba48695feaa6f1') in 0.699950 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 17
+========================================================================
+Received Import Request.
+  Time since last request: 37.874670 seconds.
+  path: Assets/Textures
+  artifactKey: Guid(9c3becba20ef4e44692bad309038df07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures using Guid(9c3becba20ef4e44692bad309038df07) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '942c6eeda390dd9f13bad983a5e67453') in 0.000449 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 5.662014 seconds.
-  path: Assets/Models/Story4
-  artifactKey: Guid(7288695959410c64895b652493f2c61f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story4 using Guid(7288695959410c64895b652493f2c61f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '9c5d6071a3bb4d8bace6ee5fb11b97ec') in 0.000999 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 21.354657 seconds.
-  path: Assets/Models/Story1/Personajes
-  artifactKey: Guid(643eb082e59fa514aae13441470b6d96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story1/Personajes using Guid(643eb082e59fa514aae13441470b6d96) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'f2eed1feaf2f77660479fc78e7896243') in 0.001007 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 6.489562 seconds.
-  path: Assets/Models/Story1/Edificios
-  artifactKey: Guid(b21fad8dd28cd5b44afc7da1d79f1c05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story1/Edificios using Guid(b21fad8dd28cd5b44afc7da1d79f1c05) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '1aef9996a0e3356574728ea7601abc13') in 0.001182 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 4.126933 seconds.
-  path: Assets/Models/Story1/Props
-  artifactKey: Guid(fa54a1a5a48a58f4e9ab06b13af686e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story1/Props using Guid(fa54a1a5a48a58f4e9ab06b13af686e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '071a98ad98fa60897481c3f41cb315af') in 0.001056 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 21.088288 seconds.
-  path: Assets/Models/Story2/Personajes
-  artifactKey: Guid(38610d19f8f70c04b861a08210eec1dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story2/Personajes using Guid(38610d19f8f70c04b861a08210eec1dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'be29bc8062a21eec300e3ec436050f3e') in 0.001180 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 6.085641 seconds.
-  path: Assets/Models/Story3/Personajes
-  artifactKey: Guid(ae232aedb4efd574da1d877edc914d19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story3/Personajes using Guid(ae232aedb4efd574da1d877edc914d19) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '3afadb454793df6487144dfb04d6fd76') in 0.001061 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 3.075399 seconds.
-  path: Assets/Models/Story4/Personajes
-  artifactKey: Guid(9e89c87a901f4a9478d4ad12b6817ac1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Story4/Personajes using Guid(9e89c87a901f4a9478d4ad12b6817ac1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'e0bd24d7195e29d68acf9d9683364fe2') in 0.000876 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 26.444997 seconds.
+  Time since last request: 1.194273 seconds.
   path: Assets/Textures/Story1
   artifactKey: Guid(87838688a20ad454a9adec4fb1114f99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/Story1 using Guid(87838688a20ad454a9adec4fb1114f99) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'd33da9645cd00c285b9bb34fea8fe96e') in 0.000965 seconds
+Start importing Assets/Textures/Story1 using Guid(87838688a20ad454a9adec4fb1114f99) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '25b211b63a0b1693f91b9937000ac164') in 0.000490 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 26.464180 seconds.
-  path: Assets/Animations/Personajes
-  artifactKey: Guid(029e6d5014cebdf4889d0deca1426a38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Personajes using Guid(029e6d5014cebdf4889d0deca1426a38) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '6b0c46e257a0eab3f29e69ab193fca06') in 0.000965 seconds
+  Time since last request: 41.221162 seconds.
+  path: Assets/Models/Story1/Autos/Auto1.fbx
+  artifactKey: Guid(35e142b6ad467f944ac6dc28430de2b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto1.fbx using Guid(35e142b6ad467f944ac6dc28430de2b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'd61a8efe1f91022849a85eb6557b23de') in 0.081480 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 4.902547 seconds.
+  path: Assets/Models/Story1/Autos/Auto1.fbm
+  artifactKey: Guid(243ca1166bc7b2646bff528a12eb6575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto1.fbm using Guid(243ca1166bc7b2646bff528a12eb6575) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '8dfc8979be69d226ae4a2efbe24d9264') in 0.000515 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 10.830451 seconds.
-  path: Assets/Animations/Characters
-  artifactKey: Guid(029e6d5014cebdf4889d0deca1426a38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters using Guid(029e6d5014cebdf4889d0deca1426a38) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'def893d431937a74df79b674d7372871') in 0.001128 seconds
+  Time since last request: 1.342548 seconds.
+  path: Assets/Models/Story1/Autos/Materials
+  artifactKey: Guid(b38ce421819a38e4b8ecd10b645d18f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Materials using Guid(b38ce421819a38e4b8ecd10b645d18f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'bbbd9a2b45c9a7c41461d44eb729dc80') in 0.000428 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 26.583389 seconds.
-  path: Assets/Animations/Characters/Story1
-  artifactKey: Guid(61cbbc010bb335f4a8b215232d6d7dba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters/Story1 using Guid(61cbbc010bb335f4a8b215232d6d7dba) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'afaff28483bad1aee7a303c6a238ad36') in 0.000960 seconds
+  Time since last request: 43.717575 seconds.
+  path: Assets/Models/Story1/Autos/Auto1
+  artifactKey: Guid(232cd0a5be6837a46b6d1728e4192ea9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto1 using Guid(232cd0a5be6837a46b6d1728e4192ea9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'b9fe2b589a6687934e7e6aaa31b10433') in 0.000396 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 8.079641 seconds.
-  path: Assets/Animations/Characters/Story1/Edificios
-  artifactKey: Guid(f5d58e6b944344c4392438deec91c492) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters/Story1/Edificios using Guid(f5d58e6b944344c4392438deec91c492) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'f56a5bf75e5f48a2fceb8ac46fd6f3fc') in 0.001015 seconds
+  Time since last request: 19.012877 seconds.
+  path: Assets/Models/Story1/Autos/Auto2
+  artifactKey: Guid(0bca543d08c0c4041822eecc4a2d5018) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2 using Guid(0bca543d08c0c4041822eecc4a2d5018) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'cdb3079bc27a3ce40db760a97d21774c') in 0.000464 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 5.491970 seconds.
-  path: Assets/Animations/Characters/Story2
-  artifactKey: Guid(8f14130bce4cc5c4e9b265193f0852b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters/Story2 using Guid(8f14130bce4cc5c4e9b265193f0852b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '9cb463d894cd6bca8531e86b8c4acdd8') in 0.001127 seconds
+  Time since last request: 61.364933 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2.fbx
+  artifactKey: Guid(a4dc960868d84c0448aea371099ee4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2.fbx using Guid(a4dc960868d84c0448aea371099ee4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'fb3381600d902281d29539c8971acfb7') in 0.051618 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 56.279069 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2.fbx
+  artifactKey: Guid(a4dc960868d84c0448aea371099ee4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2.fbx using Guid(a4dc960868d84c0448aea371099ee4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'f0abd12a7197865de893e192b2208a2d') in 0.076302 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 23.853777 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2.fbx
+  artifactKey: Guid(a4dc960868d84c0448aea371099ee4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2.fbx using Guid(a4dc960868d84c0448aea371099ee4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '1294c72af38fb483b542aa95c8dc9bce') in 0.026599 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 7.092810 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2.fbx
+  artifactKey: Guid(a4dc960868d84c0448aea371099ee4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2.fbx using Guid(a4dc960868d84c0448aea371099ee4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'e10c0bbd8cff3b4566c00c091e4b9504') in 0.031201 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 63.926277 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2rojo.fbx
+  artifactKey: Guid(e7ac0c70fccc75f488db6328bf080bfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2rojo.fbx using Guid(e7ac0c70fccc75f488db6328bf080bfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '4005e020479e2f927bfce5aa68f38c9b') in 0.020046 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 5.961083 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2rojo.fbx
+  artifactKey: Guid(e7ac0c70fccc75f488db6328bf080bfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2rojo.fbx using Guid(e7ac0c70fccc75f488db6328bf080bfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'c11a81cb8151c31100754249e597d600') in 0.032826 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 4.813291 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Materials
+  artifactKey: Guid(b53afd055ced9084099caa39d7c92377) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Materials using Guid(b53afd055ced9084099caa39d7c92377) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '4c447e5b25b077ce8cdf9f87788b9701') in 0.000593 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 0.908482 seconds.
-  path: Assets/Animations/Characters/Story2/Edificios
-  artifactKey: Guid(b86d6a6200e55804ab01a31f0f79acc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters/Story2/Edificios using Guid(b86d6a6200e55804ab01a31f0f79acc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: 'a66c17646e742d902a20967ae6f7f7ec') in 0.000553 seconds
+  Time since last request: 0.044890 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Materials/car_gray.mat
+  artifactKey: Guid(1468fb2a7427f1e4ab74f20a8bb89112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Materials/car_gray.mat using Guid(1468fb2a7427f1e4ab74f20a8bb89112) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'e7f338ec7836b8329f76b241cf958895') in 0.018860 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 5.994359 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2.fbm
+  artifactKey: Guid(ab3f93a241ef9ff4ca0bc92eaec0a107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2.fbm using Guid(ab3f93a241ef9ff4ca0bc92eaec0a107) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '1d4432d29fd53c359818a9481c2b3289') in 0.000450 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 20.193243 seconds.
-  path: Assets/Animations/Characters/Story3
-  artifactKey: Guid(c220e61f244347c49a69d04c782b4051) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters/Story3 using Guid(c220e61f244347c49a69d04c782b4051) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '1df048bf1282ca1a1819b59cf38595c2') in 0.000740 seconds
+  Time since last request: 321.987194 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2gris.fbx
+  artifactKey: Guid(c417087f793abd148818a12f417bbcf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2gris.fbx using Guid(c417087f793abd148818a12f417bbcf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '78c8a70ea8769856d6abcd7185cb2372') in 0.001908 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
+Number of asset objects unloaded after import = 4
 ========================================================================
 Received Import Request.
-  Time since last request: 0.938408 seconds.
-  path: Assets/Animations/Characters/Story3/Edificios
-  artifactKey: Guid(bb0832a42831e044d9b39a2010041c44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters/Story3/Edificios using Guid(bb0832a42831e044d9b39a2010041c44) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '19fd4e272a53ca9466d02154bafbab7b') in 0.001358 seconds
+  Time since last request: 67.816323 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2azul.fbx
+  artifactKey: Guid(a15cefd145c9dc947a5a2eba897b8d7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2azul.fbx using Guid(a15cefd145c9dc947a5a2eba897b8d7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '1b23e2f6eb6762b808785078c3b781b4') in 0.028518 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
+Number of asset objects unloaded after import = 8
 ========================================================================
 Received Import Request.
-  Time since last request: 5.893997 seconds.
-  path: Assets/Animations/Characters/Story4
-  artifactKey: Guid(f03870b8283c12c47b4e8dafd5d09ad0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters/Story4 using Guid(f03870b8283c12c47b4e8dafd5d09ad0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '64fcdd18fa3036304c2d411ea60a7f51') in 0.000494 seconds
+  Time since last request: 49.406012 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2gris.fbx
+  artifactKey: Guid(c417087f793abd148818a12f417bbcf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2gris.fbx using Guid(c417087f793abd148818a12f417bbcf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '696cc79b3992dddc2a8046d5e90829d1') in 0.002186 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
+Number of asset objects unloaded after import = 4
 ========================================================================
 Received Import Request.
-  Time since last request: 1.094226 seconds.
-  path: Assets/Animations/Characters/Story4/Edificios
-  artifactKey: Guid(9f1ffd1cbff7a6f47b90d5480731fe58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Characters/Story4/Edificios using Guid(9f1ffd1cbff7a6f47b90d5480731fe58) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '2c6ad1820c3c877eb591daeea5b26b1a') in 0.000984 seconds
+  Time since last request: 38.124342 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2gris.fbx
+  artifactKey: Guid(c417087f793abd148818a12f417bbcf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2gris.fbx using Guid(c417087f793abd148818a12f417bbcf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'bf2a6a0ba46d935bf7348f4f7945e4e1') in 0.023418 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
+Number of asset objects unloaded after import = 8
 ========================================================================
 Received Import Request.
-  Time since last request: 127.820575 seconds.
-  path: Assets/Scripts/Game/SceneLoader.cs
-  artifactKey: Guid(09c302a155ed5dd47955d57d1b857ff6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Game/SceneLoader.cs using Guid(09c302a155ed5dd47955d57d1b857ff6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '3dd35f82a5d157ddb57c34e50d0844a3') in 0.000580 seconds
+  Time since last request: 35.995764 seconds.
+  path: Assets/Models/Story1/Autos/Auto2/Auto2verde.fbx
+  artifactKey: Guid(678df9d41acac504c981cb6ee2d8d828) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Story1/Autos/Auto2/Auto2verde.fbx using Guid(678df9d41acac504c981cb6ee2d8d828) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'f8d089d3ef269c8b10e3df0d50867cfd') in 0.022846 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Prepare
-Caller must complete domain reload
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.765 seconds
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.100 seconds
-Domain Reload Profiling: 2864ms
-	BeginReloadAssembly (319ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (19ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (56ms)
-	RebuildCommonClasses (82ms)
-	RebuildNativeTypeToScriptingClass (23ms)
-	initialDomainReloadingComplete (43ms)
-	LoadAllAssembliesAndSetupDomain (297ms)
-		LoadAssemblies (456ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (28ms)
-			TypeCache.Refresh (11ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (9ms)
-			ResolveRequiredComponents (7ms)
-	FinalizeReload (2101ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (683ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			SetLoadedEditorAssemblies (4ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (83ms)
-			ProcessInitializeOnLoadAttributes (536ms)
-			ProcessInitializeOnLoadMethodAttributes (51ms)
-			AfterProcessingInitializeOnLoad (3ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 6.79 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3239 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 14 unused Assets / (28.5 KB). Loaded Objects now: 3718.
-Memory consumption went from 120.4 MB to 120.3 MB.
-Total: 11.445300 ms (FindLiveObjects: 0.462500 ms CreateObjectMapping: 0.239600 ms MarkObjects: 10.656500 ms  DeleteObjects: 0.084300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:scripting/monoscript/fileName/SceneLoader.cs: 5c0816849d186432ffce5e360c37577f -> 
-  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 4c9ddd2351789375870fbeb38dfdc937 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 12.102813 seconds.
-  path: Assets/Scripts/Game/SceneLoader.cs
-  artifactKey: Guid(09c302a155ed5dd47955d57d1b857ff6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Game/SceneLoader.cs using Guid(09c302a155ed5dd47955d57d1b857ff6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
- -> (artifact id: '77d664273ea2be6ccba834257f77dd17') in 0.004835 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Prepare
-Caller must complete domain reload
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.655 seconds
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.452 seconds
-Domain Reload Profiling: 3107ms
-	BeginReloadAssembly (229ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (8ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (43ms)
-	RebuildCommonClasses (48ms)
-	RebuildNativeTypeToScriptingClass (14ms)
-	initialDomainReloadingComplete (28ms)
-	LoadAllAssembliesAndSetupDomain (335ms)
-		LoadAssemblies (446ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (33ms)
-			TypeCache.Refresh (11ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (10ms)
-			ResolveRequiredComponents (9ms)
-	FinalizeReload (2453ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (747ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (11ms)
-			SetLoadedEditorAssemblies (11ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (94ms)
-			ProcessInitializeOnLoadAttributes (563ms)
-			ProcessInitializeOnLoadMethodAttributes (63ms)
-			AfterProcessingInitializeOnLoad (5ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (15ms)
-Refreshing native plugins compatible for Editor in 8.78 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3239 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 14 unused Assets / (28.5 KB). Loaded Objects now: 3722.
-Memory consumption went from 120.4 MB to 120.3 MB.
-Total: 6.492800 ms (FindLiveObjects: 0.621500 ms CreateObjectMapping: 0.262100 ms MarkObjects: 5.490500 ms  DeleteObjects: 0.115300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:scripting/monoscript/fileName/SceneLoader.cs: 5c0816849d186432ffce5e360c37577f -> 
-  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 4c9ddd2351789375870fbeb38dfdc937 -> 
+Number of asset objects unloaded after import = 8
