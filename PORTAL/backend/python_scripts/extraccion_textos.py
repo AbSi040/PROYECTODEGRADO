@@ -10,7 +10,7 @@ import os
 conexion = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="root",  # cambia según tu configuración
+    password="root",  
     database="proyecto_videojuego_portal"
 )
 cursor = conexion.cursor(dictionary=True)
@@ -30,18 +30,18 @@ for r in recursos:
     contenido = io.BytesIO(r["archivo"])
 
     try:
-        # PDFs
+        
         if tipo == "pdf":
             pdf = fitz.open(stream=contenido, filetype="pdf")
             for page in pdf:
                 texto += page.get_text("text")
 
-        # Imágenes o infografías
+        
         elif tipo in ["imagen", "image", "infografia"]:
             img = Image.open(contenido)
             texto = pytesseract.image_to_string(img, lang="spa")
 
-        # Audios (usa Whisper)
+        
         elif tipo == "audio":
             temp_audio = "temp_audio.wav"
             with open(temp_audio, "wb") as f:
@@ -50,7 +50,7 @@ for r in recursos:
             texto = result["text"]
             os.remove(temp_audio)
 
-        # Videos (extrae audio y lo pasa a Whisper)
+       
         elif tipo == "video":
             temp_video = "temp_video.mp4"
             with open(temp_video, "wb") as f:

@@ -31,7 +31,7 @@ function Header() {
           boxShadow: "0 3px 6px rgba(0,0,0,0.25)",
         }}
       >
-        Mensaje acerca de la violencia
+        La violencia nunca es la solución a un problema y solo genera más dolor y sufrimiento. Su uso es una forma de control y poder y puede causar daños irreparables en las personas que la sufren. Debemos trabajar para construir un futuro mejor y lograr una sociedad más justa.
       </p>
     </header>
   );

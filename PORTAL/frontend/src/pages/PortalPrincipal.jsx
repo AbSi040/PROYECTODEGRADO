@@ -43,7 +43,6 @@ function PortalPrincipal() {
         </Link>
       </div>
 
-      {/* 🔍 Barra de búsqueda y filtros */}
       <div
         style={{
           width: "90%",

@@ -8,13 +8,12 @@ const SECRET = process.env.JWT_SECRET;
 //---------REGISTRO------
 export const register = async (req, res) => {
   try {
-    const { login_nombre, password, id_rol, nombre_completo, codigo_anonimo } = req.body;
+    const { login_nombre, password, id_rol, codigo_anonimo } = req.body;
     const hash = await bcrypt.hash(password, 10);
     const nuevo = await Usuario.create({
       login_nombre,
       password_hash: hash,
       id_rol,
-      nombre_completo,
       codigo_anonimo
     });
     res.status(201).json({ message: "Usuario registrado", usuario: nuevo });

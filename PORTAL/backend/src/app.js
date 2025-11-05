@@ -2,11 +2,12 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { sequelize } from "./config/database.js";
+
+// Rutas
 import authRoutes from "./routes/auth.routes.js";
-import recursoRoutes from "./routes/recurso.routes.js";
+import recursoRoutes from "./routes/recursos.routes.js";
 import recursoUploadRoutes from "./routes/recursoUpload.routes.js";
 import busquedaRoutes from "./routes/busqueda.routes.js";
-
 
 dotenv.config();
 
@@ -14,16 +15,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Rutas
 app.use("/api/auth", authRoutes);
-app.use("/api/recursos", recursoRoutes);
+app.use("/api", recursoRoutes);
 app.use("/api", recursoUploadRoutes);
 app.use("/api", busquedaRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Servidor backend funcionando correctamente");
+  res.send("Servidor backend funcionando correctamente 🚀");
 });
 
-sequelize.sync()
+sequelize
+  .sync()
   .then(() => console.log("Base de datos conectada y sincronizada"))
   .catch((err) => console.error("Error al conectar con la base de datos:", err));
 
