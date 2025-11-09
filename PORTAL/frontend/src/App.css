@@ -1,42 +1,156 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* 🌿 Estilos globales del portal de recursos */
+/* Paleta base: marrón (#C57A3D), verde (#6B7E77), beige (#D9D9D9), acento oscuro (#4E3B2B) */
+
+/* Tipografía general */
+body {
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #d9d9d9;
+  color: #4e3b2b;
+  overflow-x: hidden;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Botones generales */
+button,
+a.button {
+  background-color: #c57a3d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+button:hover,
+a.button:hover {
+  transform: scale(1.05);
+  background-color: #a86430;
+}
+
+/* Tarjetas (resources) */
+.resource-card {
+  background-color: #1c2b29;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.resource-card:hover {
+  transform: scale(1.05);
+}
+
+.resource-card h3 {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.resource-card p {
+  font-size: 0.9rem;
+  color: #d9d9d9;
+  line-height: 1.4;
+}
+
+/* Grillas de recursos */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Formularios */
+form input,
+form textarea,
+form select {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  background-color: #d9d9d9;
+  color: #4e3b2b;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* 📱 Responsividad general */
+@media (max-width: 1024px) {
+  nav {
+    padding: 0.5rem 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .resource-grid {
+    gap: 1rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar-menu {
+    gap: 0.8rem;
+  }
+
+  .resource-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .resource-card {
+    padding: 0.8rem;
+  }
+
+  button,
+  a.button {
+    width: 100%;
   }
 }
 
-.card {
-  padding: 2em;
+@media (max-width: 480px) {
+  nav {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .nav-item {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-card {
+    margin: 0 auto;
+    width: 95%;
+  }
+
+  form {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  form input,
+  form textarea,
+  form select {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
 }
 
-.read-the-docs {
-  color: #888;
-}
+

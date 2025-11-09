@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function DenunciaViolencia() {
   return (
@@ -7,17 +8,20 @@ function DenunciaViolencia() {
         width: "100vw",
         minHeight: "100vh",
         background: "linear-gradient(180deg, #D9D9D9 0%, #cfcfcf 100%)",
-        padding: "2rem",
+        paddingTop: "6rem",
         fontFamily: "'Quicksand', sans-serif",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      <div style={{ width: "90%", maxWidth: "1000px" }}>
+      
+      <div className="portal-container fade-in" style={{ width: "90%", maxWidth: "1000px" }}>
         <Link to="/" style={btnVolver}>
           ← Volver
         </Link>
+
+          <Navbar/>
 
         <h1
           style={{
@@ -30,7 +34,6 @@ function DenunciaViolencia() {
         >
           <strong>Mecanismos de denuncia y ayuda - La Paz</strong>
         </h1>
-
         <section
           style={{
             marginTop: "2rem",

@@ -22,7 +22,7 @@ function SearchBar() {
           onChange={(e) => setQuery(e.target.value)}
           style={{ width: "60%", padding: "0.8rem", borderRadius: "10px", border: "none" }}
         />
-        <button type="submit" style={{ padding: "0.8rem 1.2rem", background: "#C57A3D", color: "white", border: "none", borderRadius: "8px", marginLeft: "0.5rem" }}>
+        <button type="submit" style={{width: 100, padding: "0.8rem 1.2rem", background: "#C57A3D", color: "white", border: "none", borderRadius: "8px", marginLeft: "0.5rem" }}>
           🔍 Buscar
         </button>
       </form>
