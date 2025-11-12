@@ -26,7 +26,7 @@ router.post("/recursos/subir", upload.single("archivo"), async (req, res) => {
       }
     );
 
-    res.status(201).json({ message: "✅ Recurso guardado correctamente." });
+    res.status(201).json({ message: "Recurso guardado correctamente." });
   } catch (error) {
     console.error("Error al subir recurso:", error);
     res.status(500).json({ message: "Error al subir recurso." });

@@ -129,7 +129,7 @@ function RecursoDetalle() {
           <section style={styles.relatedPanel}>
             <h3 style={styles.relatedTitle}>Recursos relacionados</h3>
             <div style={styles.relatedGrid}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+              {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} style={styles.relatedCard}>
                   <div style={styles.relatedPreview}></div>
                   <h4 style={styles.relatedText}>Recurso #{i}</h4>

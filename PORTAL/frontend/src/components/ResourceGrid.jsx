@@ -20,7 +20,9 @@ function ResourceGrid() {
     } else if (r.tipo === "VIDEO") {
       return <video src={r.url_origen} style={styles.preview} controls />;
     } else if (r.tipo === "PDF") {
-      return <embed src={r.url_origen} type="application/pdf" style={styles.preview} />;
+      return (
+        <embed src={r.url_origen} type="application/pdf" style={styles.preview} />
+      );
     } else if (r.tipo === "AUDIO") {
       return (
         <audio controls style={{ width: "100%" }}>
@@ -36,20 +38,32 @@ function ResourceGrid() {
 
   const getIconForType = (tipo) => {
     switch (tipo) {
-      case "PDF": return "📄";
-      case "DOCX": case "RTF": case "ODT": case "TXT": return "🧾";
-      case "XLSX": return "📊";
-      case "AUDIO": return "🎧";
-      case "VIDEO": return "🎥";
-      case "IMAGE": case "INFOGRAFIA": return "🖼️";
-      case "HTML": return "🌐";
-      default: return "📁";
+      case "PDF":
+        return "📄";
+      case "DOCX":
+      case "RTF":
+      case "ODT":
+      case "TXT":
+        return "🧾";
+      case "XLSX":
+        return "📊";
+      case "AUDIO":
+        return "🎧";
+      case "VIDEO":
+        return "🎥";
+      case "IMAGE":
+      case "INFOGRAFIA":
+        return "🖼️";
+      case "HTML":
+        return "🌐";
+      default:
+        return "📁";
     }
   };
 
   return (
     <section style={styles.grid}>
-      {recursos.map((r) => (
+      {recursos.slice(0, 15).map((r) => ( // ✅ solo mostrar los primeros 15 recursos
         <div key={r.id_recurso} style={styles.card} className="hover-card">
           {renderPreview(r)}
           <h3 style={styles.title}>{r.titulo}</h3>
@@ -64,7 +78,7 @@ function ResourceGrid() {
         </div>
       ))}
 
-      {/* Efecto de agrandarse */}
+      {/* Animación hover */}
       <style>
         {`
           .hover-card {
@@ -134,7 +148,9 @@ function DocPreview({ recurso }) {
             const htmlPreview = `
               <table border="1" style="border-collapse:collapse;width:100%;font-size:0.8rem;color:#000;">
                 ${primerasFilas
-                  .map((row) => `<tr>${row.map((c) => `<td>${c || ""}</td>`).join("")}</tr>`)
+                  .map((row) =>
+                    `<tr>${row.map((c) => `<td>${c || ""}</td>`).join("")}</tr>`
+                  )
                   .join("")}
               </table>`;
             setContenido(htmlPreview);
@@ -164,9 +180,10 @@ function DocPreview({ recurso }) {
 const styles = {
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gridTemplateColumns: "repeat(3, 1fr)", // ✅ exactamente 3 columnas
     gap: "1.5rem",
-    padding: "1rem",
+    padding: "2rem 5%",
+    justifyItems: "center",
   },
   card: {
     backgroundColor: "#1C2B29",
@@ -174,6 +191,8 @@ const styles = {
     padding: "1rem",
     borderRadius: "10px",
     textAlign: "center",
+    width: "100%",
+    maxWidth: "360px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
   },
   preview: {

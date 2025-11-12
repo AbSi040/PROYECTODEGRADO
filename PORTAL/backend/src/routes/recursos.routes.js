@@ -3,60 +3,32 @@ import { sequelize } from "../config/database.js";
 
 const router = express.Router();
 
-// Obtener todos los recursos con soporte Base64
 router.get("/recursos", async (req, res) => {
   try {
     const [rows] = await sequelize.query(`
       SELECT id_recurso, titulo, descripcion_corta, tipo, archivo
       FROM recurso
-      ORDER BY creado_en DESC;
+      ORDER BY creado_en DESC
+      LIMIT 10;
     `);
 
-   // Convertimos el campo binario a Base64 según el tipo
-const recursos = rows.map((r) => {
-  if (r.archivo) {
-    const base64 = Buffer.from(r.archivo).toString("base64");
+    // Solo generar vista previa (sin todo el archivo completo)
+    const recursos = rows.map((r) => {
+      if (r.archivo && r.archivo.length > 0) {
+        const base64 = Buffer.from(r.archivo).toString("base64");
 
-    switch (r.tipo) {
-      case "IMAGE":
-      case "INFOGRAFIA":
-        r.url_origen = `data:image/jpeg;base64,${base64}`;
-        break;
-      case "VIDEO":
-        r.url_origen = `data:video/mp4;base64,${base64}`;
-        break;
-      case "AUDIO":
-        r.url_origen = `data:audio/mpeg;base64,${base64}`;
-        break;
-      case "PDF":
-        r.url_origen = `data:application/pdf;base64,${base64}`;
-        break;
-      case "DOCX":
-        r.url_origen = `data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,${base64}`;
-        break;
-      case "TXT":
-        r.url_origen = `data:text/plain;base64,${base64}`;
-        break;
-      case "RTF":
-        r.url_origen = `data:application/rtf;base64,${base64}`;
-        break;
-      case "ODT":
-        r.url_origen = `data:application/vnd.oasis.opendocument.text;base64,${base64}`;
-        break;
-      case "HTML":
-        r.url_origen = `data:text/html;base64,${base64}`;
-        break;
-      case "XLSX":
-        r.url_origen = `data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,${base64}`;
-        break;
-      default:
-        r.url_origen = `data:application/octet-stream;base64,${base64}`;
-        break;
-    }
-  }
-  delete r.archivo;
-  return r;
-});
+        // Solo generar vista previa si es imagen, video o audio
+        if (["IMAGE", "INFOGRAFIA"].includes(r.tipo?.toUpperCase())) {
+          r.url_origen = `data:image/jpeg;base64,${base64}`;
+        } else if (r.tipo?.toUpperCase() === "VIDEO") {
+          r.url_origen = `data:video/mp4;base64,${base64}`;
+        } else if (r.tipo?.toUpperCase() === "AUDIO") {
+          r.url_origen = `data:audio/mpeg;base64,${base64}`;
+        }
+      }
+      delete r.archivo; // evitar peso innecesario
+      return r;
+    });
 
     res.json(recursos);
   } catch (err) {
@@ -65,11 +37,18 @@ const recursos = rows.map((r) => {
   }
 });
 
-// 📂 Obtener un recurso por ID
+
+/* =========================================================
+   🔹 OBTENER DETALLE DE UN RECURSO (sin sobrecarga)
+   ========================================================= */
 router.get("/recursos/:id", async (req, res) => {
   try {
     const [rows] = await sequelize.query(
-      "SELECT * FROM recurso WHERE id_recurso = ?",
+      `
+      SELECT id_recurso, titulo, descripcion_corta, tipo, autor_fuente, archivo
+      FROM recurso
+      WHERE id_recurso = ?;
+      `,
       { replacements: [req.params.id] }
     );
 
@@ -77,62 +56,88 @@ router.get("/recursos/:id", async (req, res) => {
       return res.status(404).json({ error: "Recurso no encontrado." });
 
     const recurso = rows[0];
+
+    // Solo convertir el archivo actual a Base64 si existe
     if (recurso.archivo) {
-      let mime = "application/octet-stream";
-      if (recurso.tipo === "IMAGE" || recurso.tipo === "INFOGRAFIA")
-        mime = "image/jpeg";
-      else if (recurso.tipo === "VIDEO") mime = "video/mp4";
-      else if (recurso.tipo === "AUDIO") mime = "audio/mpeg";
-      else if (recurso.tipo === "PDF") mime = "application/pdf";
-      else if (recurso.tipo === "DOCX")
-  mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-else if (recurso.tipo === "TXT")
-  mime = "text/plain";
-else if (recurso.tipo === "RTF")
-  mime = "application/rtf";
-else if (recurso.tipo === "ODT")
-  mime = "application/vnd.oasis.opendocument.text";
-else if (recurso.tipo === "HTML")
-  mime = "text/html";
-else if (recurso.tipo === "XLSX")
-  mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-
-
       const base64 = Buffer.from(recurso.archivo).toString("base64");
+
+      let mime = "application/octet-stream";
+      switch (recurso.tipo?.toUpperCase()) {
+        case "IMAGE":
+        case "INFOGRAFIA":
+          mime = "image/jpeg";
+          break;
+        case "VIDEO":
+          mime = "video/mp4";
+          break;
+        case "AUDIO":
+          mime = "audio/mpeg";
+          break;
+        case "PDF":
+          mime = "application/pdf";
+          break;
+        case "DOCX":
+          mime =
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+          break;
+        case "TXT":
+          mime = "text/plain";
+          break;
+        case "RTF":
+          mime = "application/rtf";
+          break;
+        case "ODT":
+          mime = "application/vnd.oasis.opendocument.text";
+          break;
+        case "HTML":
+          mime = "text/html";
+          break;
+        case "XLSX":
+          mime =
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+          break;
+      }
+
       recurso.url_origen = `data:${mime};base64,${base64}`;
     }
-    delete recurso.archivo;
+
+    delete recurso.archivo; // remover el campo binario
 
     res.json(recurso);
   } catch (err) {
-    console.error("Error al obtener recurso:", err);
+    console.error("❌ Error al obtener recurso:", err);
     res.status(500).json({ error: "Error al obtener recurso." });
   }
 });
 
-// 🔽 Descargar archivo desde la base de datos
+/* =========================================================
+   🔹 DESCARGAR ARCHIVO (solo cuando se solicita)
+   ========================================================= */
 router.get("/recursos/:id/descargar", async (req, res) => {
   try {
     const [rows] = await sequelize.query(
-      "SELECT titulo, tipo, archivo FROM recurso WHERE id_recurso = ?",
+      `
+      SELECT titulo, tipo, archivo
+      FROM recurso
+      WHERE id_recurso = ?;
+      `,
       { replacements: [req.params.id] }
     );
 
-    if (rows.length === 0) {
+    if (rows.length === 0)
       return res.status(404).json({ error: "Recurso no encontrado." });
-    }
 
     const recurso = rows[0];
 
-    if (!recurso.archivo) {
-      return res.status(400).json({ error: "El recurso no tiene archivo asociado." });
-    }
+    if (!recurso.archivo)
+      return res
+        .status(400)
+        .json({ error: "El recurso no tiene archivo asociado." });
 
-    // 📎 Definir tipo MIME y extensión según el tipo
     let mime = "application/octet-stream";
     let extension = "bin";
 
-    switch (recurso.tipo.toUpperCase()) {
+    switch (recurso.tipo?.toUpperCase()) {
       case "IMAGE":
       case "INFOGRAFIA":
         mime = "image/jpeg";
@@ -150,23 +155,24 @@ router.get("/recursos/:id/descargar", async (req, res) => {
         mime = "application/pdf";
         extension = "pdf";
         break;
+      default:
+        break;
     }
 
-    // ⚙️ Asegurar encabezados correctos
     res.setHeader("Content-Type", mime);
     res.setHeader(
       "Content-Disposition",
-      `attachment; filename="${(recurso.titulo || "recurso").replace(/[^a-zA-Z0-9]/g, "_")}.${extension}"`
+      `attachment; filename="${(recurso.titulo || "recurso")
+        .replace(/[^a-zA-Z0-9]/g, "_")
+        .substring(0, 50)}.${extension}"`
     );
     res.setHeader("Content-Length", recurso.archivo.length);
 
-    // 📤 Enviar archivo binario
     res.end(Buffer.from(recurso.archivo, "binary"));
   } catch (err) {
     console.error("❌ Error al descargar recurso:", err);
     res.status(500).json({ error: "Error al descargar recurso." });
   }
 });
-
 
 export default router;

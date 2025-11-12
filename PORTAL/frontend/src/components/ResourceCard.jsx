@@ -1,61 +1,154 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaFilePdf, FaImage, FaVideo } from "react-icons/fa6";
 
-function RecursoDetalle() {
-  const { id } = useParams();
-  const [recurso, setRecurso] = useState(null);
+function ResourceCard({ recurso }) {
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get(`http://localhost:4000/api/recursos/${id}`)
-      .then(res => setRecurso(res.data))
-      .catch(err => console.error("Error al obtener recurso:", err));
-  }, [id]);
+  const handleClick = () => {
+    navigate(`/portal/recurso/${recurso.id_recurso}`);
+  };
 
-  if (!recurso) return <p style={{ textAlign: "center" }}>Cargando recurso...</p>;
+  // 🔹 Determinar ícono según tipo
+  const getIcon = () => {
+    if (recurso.tipo === "PDF") return <FaFilePdf style={{ marginRight: "6px" }} />;
+    if (recurso.tipo === "VIDEO") return <FaVideo style={{ marginRight: "6px" }} />;
+    return <FaImage style={{ marginRight: "6px" }} />;
+  };
+
+  // 🔹 Mostrar vista previa según tipo
+  const renderPreview = () => {
+    if (recurso.tipo === "VIDEO") {
+      return (
+        <video
+          src={recurso.url_origen}
+          controls={false}
+          style={{
+            width: "100%",
+            height: "200px",
+            borderTopLeftRadius: "12px",
+            borderTopRightRadius: "12px",
+            objectFit: "cover",
+            backgroundColor: "#111",
+          }}
+        />
+      );
+    }
+    if (recurso.tipo === "IMAGE" || recurso.tipo === "INFOGRAFIA") {
+      return (
+        <img
+          src={recurso.url_origen}
+          alt={recurso.titulo}
+          style={{
+            width: "100%",
+            height: "200px",
+            borderTopLeftRadius: "12px",
+            borderTopRightRadius: "12px",
+            objectFit: "cover",
+          }}
+        />
+      );
+    }
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "200px",
+          borderTopLeftRadius: "12px",
+          borderTopRightRadius: "12px",
+          backgroundColor: "#243434",
+          color: "#ccc",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "0.9rem",
+        }}
+      >
+        Vista previa no disponible
+      </div>
+    );
+  };
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>{recurso.titulo}</h1>
-      <div style={styles.content}>
-        <div style={styles.media}>
-          {recurso.tipo === "IMAGE" ? (
-            <img src={recurso.archivo || recurso.url_origen} alt={recurso.titulo} style={styles.viewer} />
-          ) : recurso.tipo === "VIDEO" ? (
-            <video src={recurso.archivo || recurso.url_origen} controls style={styles.viewer}></video>
-          ) : recurso.tipo === "PDF" ? (
-            <iframe src={recurso.archivo || recurso.url_origen} title="PDF" style={styles.viewer}></iframe>
-          ) : (
-            <p>No hay vista previa disponible</p>
-          )}
+    <div
+      className="recurso-card"
+      onClick={handleClick}
+      style={{
+        backgroundColor: "#213A3A",
+        borderRadius: "12px",
+        overflow: "hidden",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+        transition: "transform 0.2s ease, box-shadow 0.2s ease",
+        cursor: "pointer",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "scale(1.03)";
+        e.currentTarget.style.boxShadow = "0 6px 14px rgba(0, 0, 0, 0.4)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "scale(1)";
+        e.currentTarget.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
+      }}
+    >
+      {renderPreview()}
+
+      <div style={{ padding: "1rem", color: "white" }}>
+        <h3
+          style={{
+            fontSize: "1rem",
+            fontWeight: "600",
+            color: "#F5CDAA",
+            marginBottom: "0.3rem",
+            textTransform: "uppercase",
+          }}
+        >
+          {recurso.titulo}
+        </h3>
+
+        <p
+          style={{
+            fontSize: "0.85rem",
+            color: "#CFCFCF",
+            marginBottom: "0.8rem",
+          }}
+        >
+          {recurso.descripcion_corta?.length > 60
+            ? recurso.descripcion_corta.substring(0, 60) + "..."
+            : recurso.descripcion_corta}
+        </p>
+
+        <div style={{ fontSize: "0.8rem", color: "#EAEAEA", lineHeight: "1.4" }}>
+          <p>
+            <strong>Violencia:</strong>{" "}
+            {recurso.nombre_tipo_violencia || "—"}
+          </p>
+          <p>
+            <strong>Categoría:</strong>{" "}
+            {recurso.nombre_categoria || "—"}
+          </p>
         </div>
-        <div style={styles.info}>
-          <p>{recurso.descripcion_corta || "Sin descripción disponible"}</p>
-          <a href={recurso.archivo || recurso.url_origen} download style={styles.btn}>
-            ⬇ Descargar recurso
-          </a>
-        </div>
+
+        <button
+          style={{
+            width: "100%",
+            marginTop: "0.9rem",
+            padding: "0.6rem",
+            backgroundColor: "#C57A3D",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            fontWeight: "500",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "0.9rem",
+          }}
+        >
+          {getIcon()} Ver recurso
+        </button>
       </div>
     </div>
   );
 }
 
-const styles = {
-  container: { padding: "2rem", color: "#4E3B2B" },
-  title: { textAlign: "center", fontWeight: "bold", fontSize: "2rem", marginBottom: "1rem" },
-  content: { display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" },
-  media: { flex: "1", background: "#1C2B29", padding: "1rem", borderRadius: "10px" },
-  info: { flex: "1", background: "#6B7E77", padding: "1rem", borderRadius: "10px" },
-  viewer: { width: "100%", height: "400px", borderRadius: "10px", objectFit: "contain" },
-  btn: {
-    display: "inline-block",
-    backgroundColor: "#C57A3D",
-    color: "white",
-    padding: "0.8rem 1.4rem",
-    borderRadius: "10px",
-    textDecoration: "none",
-    fontWeight: "bold",
-  },
-};
-
-export default RecursoDetalle;
+export default ResourceCard;

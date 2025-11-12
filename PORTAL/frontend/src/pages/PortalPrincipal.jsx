@@ -33,11 +33,11 @@ const PortalPrincipal = () => {
 
         {/* Contenedor de recursos */}
         <section className="resources-section">
-          <ResourceGrid resources={resources} />
+          <ResourceGrid />
+
         </section>
       </main>
     </div>
   );
 };
-
 export default PortalPrincipal;

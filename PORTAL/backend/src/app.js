@@ -9,7 +9,9 @@ import recursoRoutes from "./routes/recursos.routes.js";
 import recursoUploadRoutes from "./routes/recursoUpload.routes.js";
 import busquedaRoutes from "./routes/busqueda.routes.js";
 import menuRoutes from "./routes/menu.routes.js";
-
+import informesRoutes from "./routes/informes.routes.js";
+import informeRoutes from "./routes/informe.routes.js";
+import decisionRoutes from "./routes/decision.routes.js";
 
 
 dotenv.config();
@@ -17,6 +19,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173" }));
 
 // Rutas
 app.use("/api/auth", authRoutes);
@@ -24,6 +27,9 @@ app.use("/api", recursoRoutes);
 app.use("/api", recursoUploadRoutes);
 app.use("/api", busquedaRoutes);
 app.use("/api", menuRoutes);
+app.use("/api/informes", informesRoutes);
+app.use("/api/informe", informeRoutes);
+app.use("/api/decisiones", decisionRoutes);
 
 app.get("/", (req, res) => {
   res.send("Servidor backend funcionando correctamente ");

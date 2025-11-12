@@ -1,41 +1,76 @@
-import { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import ResourceCard from "./ResourceCard";
 
 function SearchBar() {
   const [query, setQuery] = useState("");
   const [resultados, setResultados] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const manejarBusqueda = async (e) => {
-    e.preventDefault();
+  const handleSearch = async () => {
     if (!query.trim()) return;
-    const res = await axios.post("http://localhost:4000/api/buscar", { consulta: query });
-    setResultados(res.data);
+    setLoading(true);
+
+    try {
+      const response = await fetch(`/api/buscar?q=${encodeURIComponent(query)}`);
+      const data = await response.json();
+      setResultados(data.resultados || []);
+    } catch (err) {
+      console.error("Error al buscar:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div style={{ textAlign: "center", width: "100%" }}>
-      <form onSubmit={manejarBusqueda} style={{ marginBottom: "1rem" }}>
-        <input
-          type="text"
-          placeholder="Buscar recurso..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={{ width: "60%", padding: "0.8rem", borderRadius: "10px", border: "none" }}
-        />
-        <button type="submit" style={{width: 100, padding: "0.8rem 1.2rem", background: "#C57A3D", color: "white", border: "none", borderRadius: "8px", marginLeft: "0.5rem" }}>
-          🔍 Buscar
-        </button>
-      </form>
+    <div style={{ textAlign: "center", marginTop: "2rem" }}>
+      <input
+        type="text"
+        value={query}
+        placeholder="Buscar recurso..."
+        onChange={(e) => setQuery(e.target.value)}
+        style={{
+          padding: "0.6rem",
+          width: "300px",
+          border: "1px solid #888",
+          borderRadius: "4px",
+        }}
+      />
+      <button
+        onClick={handleSearch}
+        style={{
+          marginLeft: "8px",
+          padding: "0.6rem 1.2rem",
+          backgroundColor: "#C57A3D",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+        }}
+      >
+        Buscar
+      </button>
 
-      {resultados.length > 0 && (
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {resultados.map((r) => (
-            <li key={r.id_recurso} style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>
-              ID: {r.id_recurso} — Similitud: {r.score}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div style={{ marginTop: "2rem" }}>
+        {loading ? (
+          <p>Cargando resultados...</p>
+        ) : resultados.length === 0 ? (
+          <p style={{ color: "#777" }}>No se encontraron coincidencias.</p>
+        ) : (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+              gap: "1.5rem",
+              padding: "0 2rem",
+              marginTop: "2rem",
+            }}
+          >
+            {resultados.map((recurso) => (
+              <ResourceCard key={recurso.id_recurso} recurso={recurso} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

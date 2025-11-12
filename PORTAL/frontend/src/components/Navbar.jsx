@@ -148,12 +148,7 @@ function Navbar() {
               >
                 Violencia en el noviazgo
               </button>
-              <button 
-                style={styles.dropdownButton}
-                onClick={() => handleViolenciaClick("intrafamiliar")}
-              >
-                Violencia intrafamiliar
-              </button>
+              
               <button 
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("genero")}
@@ -246,9 +241,27 @@ function Navbar() {
               </button>
               <button 
                 style={styles.dropdownButton}
+                onClick={() => handleViolenciaClick("intrafamiliar")}
+              >
+                Violencia en la familia
+              </button>
+              <button 
+                style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("escolar")}
               >
                 Violencia contra los derechos y la libertad sexual
+              </button>
+              <button 
+                style={styles.dropdownButton}
+                onClick={() => handleViolenciaClick("escolar")}
+              >
+                Violencia infantil
+              </button>
+              <button 
+                style={styles.dropdownButton}
+                onClick={() => handleViolenciaClick("escolar")}
+              >
+                Violencia digital
               </button>
             </div>
           )}
@@ -275,31 +288,43 @@ function Navbar() {
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("guias")}
               >
-                Guías educativas
+                Ley Normativa
               </button>
               <button 
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("leyes")}
               >
-                Leyes
+                Informe estadístico
               </button>
               <button 
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("campanias")}
               >
-                Campañas
+                Guía educativa
               </button>
               <button 
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("videos")}
               >
-                Videos
+                Artículo educativo
               </button>
               <button 
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("estadisticas")}
               >
-                Estadísticas
+                Tesis investigación
+              </button>
+              <button 
+                style={styles.dropdownButton}
+                onClick={() => handleContenidoClick("estadisticas")}
+              >
+                Recurso multimedia
+              </button>
+              <button 
+                style={styles.dropdownButton}
+                onClick={() => handleContenidoClick("estadisticas")}
+              >
+                Material Adventista
               </button>
             </div>
           )}
@@ -312,6 +337,10 @@ function Navbar() {
         <Link to="/portal/informes" style={styles.menuItem}>
           Informes y estadísticas
         </Link>
+
+        <Link to="/panel/psicologa" style={styles.menuItem}>
+  Panel de informes
+</Link>
 
         <Link to="/portal/denuncia" style={styles.menuItem}>
           Acerca de / Ayuda
@@ -424,18 +453,22 @@ const styles = {
     position: "static",
   },
   dropdownMenu: {
-    position: "fixed",
-    marginTop: "0.5rem",
-    backgroundColor: "#6B7E77",
-    borderRadius: "10px",
-    boxShadow: "0 6px 15px rgba(0,0,0,0.4)",
-    display: "flex",
-    flexDirection: "column",
-    minWidth: "200px",
-    zIndex: 9999,
-    overflow: "hidden",
-    padding: "0.5rem 0",
-  },
+  position: "fixed",
+  marginTop: "0.5rem",
+  backgroundColor: "#6B7E77",
+  borderRadius: "10px",
+  boxShadow: "0 6px 15px rgba(0,0,0,0.4)",
+  display: "flex",
+  flexDirection: "column",
+  minWidth: "280px",
+  maxHeight: "320px", // 🔹 altura máxima del dropdown
+  overflowY: "auto",  // 🔹 scroll interno vertical
+  scrollbarWidth: "thin",
+  scrollbarColor: "#C57A3D #6B7E77",
+  zIndex: 9999,
+  padding: "0.5rem 0",
+},
+
   dropdownButton: {
     color: "white",
     backgroundColor: "transparent",
