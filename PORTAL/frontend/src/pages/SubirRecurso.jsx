@@ -35,11 +35,20 @@ function SubirRecurso() {
         }
       );
 
-      setMensaje(res.data.message);
-      setTitulo("");
-      setDescripcion("");
-      setAutor("");
-      setArchivo(null);
+      if (res.data && res.data.message) {
+        setMensaje(res.data.message);
+      } else {
+        setMensaje("Recurso subido correctamente.");
+      }
+
+      // No limpies los campos antes de mostrar el mensaje
+      // Dale tiempo al mensaje para aparecer
+      setTimeout(() => {
+        setTitulo("");
+        setDescripcion("");
+        setAutor("");
+        setArchivo(null);
+      }, 500);
     } catch (error) {
       console.error(error);
       setMensaje("Error al subir el recurso.");
