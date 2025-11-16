@@ -163,12 +163,6 @@ function Navbar() {
               </button>
               <button
                 style={styles.dropdownButton}
-                onClick={() => handleViolenciaClick("fisica")}
-              >
-                Violencia feminicida
-              </button>
-              <button
-                style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("psicologica")}
               >
                 Violencia psicológica
@@ -187,12 +181,6 @@ function Navbar() {
               </button>
               <button
                 style={styles.dropdownButton}
-                onClick={() => handleViolenciaClick("escolar")}
-              >
-                Violencia contra la dignidad
-              </button>
-              <button
-                style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("fisica")}
               >
                 Violencia sexual
@@ -202,12 +190,6 @@ function Navbar() {
                 onClick={() => handleViolenciaClick("psicologica")}
               >
                 Violencia contra los derechos reproductivos
-              </button>
-              <button
-                style={styles.dropdownButton}
-                onClick={() => handleViolenciaClick("intrafamiliar")}
-              >
-                Violencia en servicios de salud
               </button>
               <button
                 style={styles.dropdownButton}
@@ -223,33 +205,15 @@ function Navbar() {
               </button>
               <button
                 style={styles.dropdownButton}
-                onClick={() => handleViolenciaClick("fisica")}
-              >
-                Violencia en el sistema educativo
-              </button>
-              <button
-                style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("psicologica")}
               >
                 Violencia en el ejercicio político y liderazgo
               </button>
               <button
                 style={styles.dropdownButton}
-                onClick={() => handleViolenciaClick("intrafamiliar")}
-              >
-                Violencia institucional
-              </button>
-              <button
-                style={styles.dropdownButton}
-                onClick={() => handleViolenciaClick("intrafamiliar")}
-              >
-                Violencia en la familia
-              </button>
-              <button
-                style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("escolar")}
               >
-                Violencia contra los derechos y la libertad sexual
+                Violencia en la familia
               </button>
               <button
                 style={styles.dropdownButton}
