@@ -34,6 +34,7 @@ function SubirRecurso() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
+
       setMensaje(res.data.message);
       setTitulo("");
       setDescripcion("");
