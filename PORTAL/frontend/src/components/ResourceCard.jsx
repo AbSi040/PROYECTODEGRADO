@@ -11,8 +11,10 @@ function ResourceCard({ recurso }) {
 
   // 🔹 Determinar ícono según tipo
   const getIcon = () => {
-    if (recurso.tipo === "PDF") return <FaFilePdf style={{ marginRight: "6px" }} />;
-    if (recurso.tipo === "VIDEO") return <FaVideo style={{ marginRight: "6px" }} />;
+    if (recurso.tipo === "PDF")
+      return <FaFilePdf style={{ marginRight: "6px" }} />;
+    if (recurso.tipo === "VIDEO")
+      return <FaVideo style={{ marginRight: "6px" }} />;
     return <FaImage style={{ marginRight: "6px" }} />;
   };
 
@@ -117,14 +119,14 @@ function ResourceCard({ recurso }) {
             : recurso.descripcion_corta}
         </p>
 
-        <div style={{ fontSize: "0.8rem", color: "#EAEAEA", lineHeight: "1.4" }}>
+        <div
+          style={{ fontSize: "0.8rem", color: "#EAEAEA", lineHeight: "1.4" }}
+        >
           <p>
-            <strong>Violencia:</strong>{" "}
-            {recurso.nombre_tipo_violencia || "—"}
+            <strong>Violencia:</strong> {recurso.nombre_tipo_violencia || "—"}
           </p>
           <p>
-            <strong>Categoría:</strong>{" "}
-            {recurso.nombre_categoria || "—"}
+            <strong>Categoría:</strong> {recurso.nombre_categoria || "—"}
           </p>
         </div>
 

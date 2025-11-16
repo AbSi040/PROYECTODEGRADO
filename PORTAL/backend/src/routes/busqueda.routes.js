@@ -17,7 +17,7 @@ router.get("/buscar", async (req, res) => {
     const scriptPath = path.resolve("python_scripts/predict_query.py");
     const { stdout } = await execFileAsync("python", [scriptPath, consulta]);
 
- let resultados = [];
+    let resultados = [];
     try {
       resultados = JSON.parse(stdout);
     } catch (err) {
@@ -28,7 +28,7 @@ router.get("/buscar", async (req, res) => {
       return res.json({ consulta, resultados: [] });
     }
 
-    const ids = resultados.map(r => r.id_recurso);
+    const ids = resultados.map((r) => r.id_recurso);
 
     const recursos = await Recurso.findAll({
       where: { id_recurso: ids },
@@ -40,6 +40,5 @@ router.get("/buscar", async (req, res) => {
     res.status(500).json({ error: "Error interno en la búsqueda" });
   }
 });
-
 
 export default router;

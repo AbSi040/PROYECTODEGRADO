@@ -8,7 +8,6 @@ import PanelPsicologa from "./pages/PanelPsicologa.jsx";
 import InformeDetalle from "./pages/InformeDetalle.jsx";
 import TestDashboard from "./pages/testDashboard.jsx";
 
-
 function App() {
   return (
     <Routes>
@@ -19,9 +18,11 @@ function App() {
       <Route path="/portal/denuncia" element={<DenunciaViolencia />} />
       <Route path="/subir" element={<SubirRecurso />} />
       <Route path="/panel/psicologa" element={<PanelPsicologa />} />
-      <Route path="/panel/psicologa/estudiante/:id" element={<InformeDetalle />} />
+      <Route
+        path="/panel/psicologa/estudiante/:id"
+        element={<InformeDetalle />}
+      />
       <Route path="/test-dashboard" element={<TestDashboard />} />
-
     </Routes>
   );
 }

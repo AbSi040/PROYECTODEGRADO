@@ -4,7 +4,9 @@ const router = express.Router();
 
 router.get("/tipos-violencia", async (req, res) => {
   try {
-    const [rows] = await sequelize.query("SELECT * FROM tipo_violencia ORDER BY nombre");
+    const [rows] = await sequelize.query(
+      "SELECT * FROM tipo_violencia ORDER BY nombre"
+    );
     res.json(rows);
   } catch (error) {
     console.error("Error al obtener tipos de violencia:", error);
@@ -14,7 +16,9 @@ router.get("/tipos-violencia", async (req, res) => {
 
 router.get("/categorias", async (req, res) => {
   try {
-    const [rows] = await sequelize.query("SELECT * FROM categoria ORDER BY nombre");
+    const [rows] = await sequelize.query(
+      "SELECT * FROM categoria ORDER BY nombre"
+    );
     res.json(rows);
   } catch (error) {
     console.error("Error al obtener categorías:", error);

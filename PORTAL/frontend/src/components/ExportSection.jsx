@@ -38,7 +38,8 @@ function ExportSection() {
       <p style={styles.text}>
         Puedes exportar los informes generales en formato Excel o PDF.
         <br />
-        (La descarga directa estará disponible cuando se completen los datos del juego.)
+        (La descarga directa estará disponible cuando se completen los datos del
+        juego.)
       </p>
 
       <div style={styles.btnContainer}>

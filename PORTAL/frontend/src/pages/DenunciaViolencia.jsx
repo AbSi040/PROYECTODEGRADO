@@ -15,13 +15,15 @@ function DenunciaViolencia() {
         alignItems: "center",
       }}
     >
-      
-      <div className="portal-container fade-in" style={{ width: "90%", maxWidth: "1000px" }}>
+      <div
+        className="portal-container fade-in"
+        style={{ width: "90%", maxWidth: "1000px" }}
+      >
         <Link to="/" style={btnVolver}>
           ← Volver
         </Link>
 
-          <Navbar/>
+        <Navbar />
 
         <h1
           style={{
@@ -57,8 +59,7 @@ function DenunciaViolencia() {
             color: "#4E3B2B",
             fontWeight: "600",
           }}
-        >
-        </p>
+        ></p>
 
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
           <a href="" style={btnDenunciar} className="hover-scale">

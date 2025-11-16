@@ -36,7 +36,7 @@ function Navbar() {
         setShowArrows(scrollWidth > clientWidth);
       }
     };
-    
+
     checkOverflow();
     window.addEventListener("resize", checkOverflow);
     return () => window.removeEventListener("resize", checkOverflow);
@@ -120,11 +120,8 @@ function Navbar() {
         </Link>
 
         {/* Dropdown Tipos de Violencia */}
-        <div
-          className="dropdown"
-          style={styles.dropdownWrapper}
-        >
-          <span 
+        <div className="dropdown" style={styles.dropdownWrapper}>
+          <span
             style={styles.menuItemDropdown}
             onClick={(e) => {
               e.stopPropagation();
@@ -135,129 +132,132 @@ function Navbar() {
             Categorías ▾
           </span>
           {dropdownViolencia && (
-            <div style={styles.dropdownMenu} onClick={(e) => e.stopPropagation()}>
-              <button 
+            <div
+              style={styles.dropdownMenu}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("fisica")}
               >
                 Bullying escolar
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("psicologica")}
               >
                 Violencia en el noviazgo
               </button>
-              
-              <button 
+
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("genero")}
               >
                 Violencia de género
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("escolar")}
               >
                 Violencia física
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("fisica")}
               >
                 Violencia feminicida
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("psicologica")}
               >
                 Violencia psicológica
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("intrafamiliar")}
               >
                 Violencia mediática
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("genero")}
               >
                 Violencia simbólica y/o encubierta
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("escolar")}
               >
                 Violencia contra la dignidad
               </button>
-               <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("fisica")}
               >
                 Violencia sexual
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("psicologica")}
               >
                 Violencia contra los derechos reproductivos
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("intrafamiliar")}
               >
                 Violencia en servicios de salud
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("genero")}
               >
                 Violencia patrimonial y económica
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("escolar")}
               >
-               Violencia laboral
+                Violencia laboral
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("fisica")}
               >
                 Violencia en el sistema educativo
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("psicologica")}
               >
                 Violencia en el ejercicio político y liderazgo
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("intrafamiliar")}
               >
                 Violencia institucional
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("intrafamiliar")}
               >
                 Violencia en la familia
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("escolar")}
               >
                 Violencia contra los derechos y la libertad sexual
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("escolar")}
               >
                 Violencia infantil
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleViolenciaClick("escolar")}
               >
@@ -268,11 +268,8 @@ function Navbar() {
         </div>
 
         {/* Dropdown Tipos de Contenido */}
-        <div
-          className="dropdown"
-          style={styles.dropdownWrapper}
-        >
-          <span 
+        <div className="dropdown" style={styles.dropdownWrapper}>
+          <span
             style={styles.menuItemDropdown}
             onClick={(e) => {
               e.stopPropagation();
@@ -283,44 +280,47 @@ function Navbar() {
             Tipo de contenido ▾
           </span>
           {dropdownContenido && (
-            <div style={styles.dropdownMenu} onClick={(e) => e.stopPropagation()}>
-              <button 
+            <div
+              style={styles.dropdownMenu}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("guias")}
               >
                 Ley Normativa
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("leyes")}
               >
                 Informe estadístico
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("campanias")}
               >
                 Guía educativa
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("videos")}
               >
                 Artículo educativo
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("estadisticas")}
               >
                 Tesis investigación
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("estadisticas")}
               >
                 Recurso multimedia
               </button>
-              <button 
+              <button
                 style={styles.dropdownButton}
                 onClick={() => handleContenidoClick("estadisticas")}
               >
@@ -339,8 +339,8 @@ function Navbar() {
         </Link>
 
         <Link to="/panel/psicologa" style={styles.menuItem}>
-  Panel de informes
-</Link>
+          Panel de informes
+        </Link>
 
         <Link to="/portal/denuncia" style={styles.menuItem}>
           Acerca de / Ayuda
@@ -367,7 +367,7 @@ function Navbar() {
           <FaUserCircle size={32} />
         </div>
         {menuUsuario && (
-          <div 
+          <div
             style={{
               ...styles.userMenu,
               top: getUserMenuPosition().top,
@@ -453,21 +453,21 @@ const styles = {
     position: "static",
   },
   dropdownMenu: {
-  position: "fixed",
-  marginTop: "0.5rem",
-  backgroundColor: "#6B7E77",
-  borderRadius: "10px",
-  boxShadow: "0 6px 15px rgba(0,0,0,0.4)",
-  display: "flex",
-  flexDirection: "column",
-  minWidth: "280px",
-  maxHeight: "320px", // 🔹 altura máxima del dropdown
-  overflowY: "auto",  // 🔹 scroll interno vertical
-  scrollbarWidth: "thin",
-  scrollbarColor: "#C57A3D #6B7E77",
-  zIndex: 9999,
-  padding: "0.5rem 0",
-},
+    position: "fixed",
+    marginTop: "0.5rem",
+    backgroundColor: "#6B7E77",
+    borderRadius: "10px",
+    boxShadow: "0 6px 15px rgba(0,0,0,0.4)",
+    display: "flex",
+    flexDirection: "column",
+    minWidth: "280px",
+    maxHeight: "320px", // 🔹 altura máxima del dropdown
+    overflowY: "auto", // 🔹 scroll interno vertical
+    scrollbarWidth: "thin",
+    scrollbarColor: "#C57A3D #6B7E77",
+    zIndex: 9999,
+    padding: "0.5rem 0",
+  },
 
   dropdownButton: {
     color: "white",

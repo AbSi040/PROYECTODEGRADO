@@ -4,10 +4,8 @@ import { sequelize } from "../config/database.js";
 
 const router = express.Router();
 
-
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-
 
 router.post("/recursos/subir", upload.single("archivo"), async (req, res) => {
   try {

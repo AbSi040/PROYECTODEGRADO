@@ -11,11 +11,13 @@ export default function DashboardSection() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [resDistribucion, resProgreso, resDecisiones] = await Promise.all([
-          api.get("/informes/distribucion"),
-          api.get("/informes/progreso"),
-          api.get("/informes/decisiones"),
-        ]);
+        const [resDistribucion, resProgreso, resDecisiones] = await Promise.all(
+          [
+            api.get("/informes/distribucion"),
+            api.get("/informes/progreso"),
+            api.get("/informes/decisiones"),
+          ]
+        );
         setDistribucion(resDistribucion.data || []);
         setProgreso(resProgreso.data || []);
         setDecisiones(resDecisiones.data || []);
@@ -29,16 +31,15 @@ export default function DashboardSection() {
     fetchData();
   }, []);
 
-  if (loading)
-    return <p style={styles.loading}>⏳ Cargando estadísticas...</p>;
-  if (error)
-    return <p style={styles.error}>{error}</p>;
+  if (loading) return <p style={styles.loading}>⏳ Cargando estadísticas...</p>;
+  if (error) return <p style={styles.error}>{error}</p>;
 
   return (
     <section style={styles.section}>
       <h2 style={styles.title}>📊 Dashboard general</h2>
       <p style={styles.subtitleGlobal}>
-        Distribución de estudiantes por clúster, progreso en historias y mapa de decisiones
+        Distribución de estudiantes por clúster, progreso en historias y mapa de
+        decisiones
       </p>
 
       <div style={styles.grid}>
@@ -65,8 +66,7 @@ export default function DashboardSection() {
    🟣 Gráfico circular
    ============================== */
 function ClusterChart({ data }) {
-  if (!data.length)
-    return <p style={styles.text}>Sin datos de clúster.</p>;
+  if (!data.length) return <p style={styles.text}>Sin datos de clúster.</p>;
 
   const total = data.reduce((sum, d) => sum + Number(d.cantidad || 0), 0);
   let startAngle = 0;
@@ -95,7 +95,13 @@ function ClusterChart({ data }) {
     <div style={{ textAlign: "center" }}>
       <svg width="180" height="180" viewBox="0 0 160 160">
         {slices.map((s, i) => (
-          <path key={i} d={s.path} fill={s.color} stroke="#fff" strokeWidth="1" />
+          <path
+            key={i}
+            d={s.path}
+            fill={s.color}
+            stroke="#fff"
+            strokeWidth="1"
+          />
         ))}
       </svg>
       <ul style={{ listStyle: "none", padding: 0, marginTop: "0.5rem" }}>
@@ -123,8 +129,7 @@ function ClusterChart({ data }) {
    🟠 Barras de progreso
    ============================== */
 function ProgressBars({ data }) {
-  if (!data.length)
-    return <p style={styles.text}>Sin datos de progreso.</p>;
+  if (!data.length) return <p style={styles.text}>Sin datos de progreso.</p>;
 
   const max = Math.max(...data.map((d) => Number(d.progreso) || 0), 100);
 
@@ -156,8 +161,7 @@ function ProgressBars({ data }) {
    🔴 Mapa de calor de decisiones
    ============================== */
 function Heatmap({ data }) {
-  if (!data.length)
-    return <p style={styles.text}>Sin datos de decisiones.</p>;
+  if (!data.length) return <p style={styles.text}>Sin datos de decisiones.</p>;
 
   const total = data.reduce((sum, d) => sum + Number(d.total || 0), 0);
 
@@ -171,7 +175,7 @@ function Heatmap({ data }) {
             <p style={styles.heatLabel}>
               {d.tipo || "Sin tipo"} <br />
               <span style={{ fontSize: "0.8rem" }}>
-                {((intensity * 100).toFixed(1))}%
+                {(intensity * 100).toFixed(1)}%
               </span>
             </p>
           </div>

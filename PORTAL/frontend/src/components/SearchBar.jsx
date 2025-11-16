@@ -11,7 +11,9 @@ function SearchBar() {
     setLoading(true);
 
     try {
-      const response = await fetch(`/api/buscar?q=${encodeURIComponent(query)}`);
+      const response = await fetch(
+        `/api/buscar?q=${encodeURIComponent(query)}`
+      );
       const data = await response.json();
       setResultados(data.resultados || []);
     } catch (err) {

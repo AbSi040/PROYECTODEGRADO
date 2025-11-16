@@ -1,5 +1,8 @@
 import express from "express";
-import { crearInformeAuto, listarInformes } from "../controllers/informe.controller.js";
+import {
+  crearInformeAuto,
+  listarInformes,
+} from "../controllers/informe.controller.js";
 import { verifyToken } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();

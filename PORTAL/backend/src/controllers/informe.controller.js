@@ -43,7 +43,13 @@ const generarObservacion = (ratios) => {
  * Crea o actualiza un informe en base a los datos del estudiante al terminar una sesión de juego.
  */
 export const crearInformeAuto = async (req, res) => {
-  const { id_usuario, id_historia, ratio_proactivo, ratio_pasivo, ratio_agresivo } = req.body;
+  const {
+    id_usuario,
+    id_historia,
+    ratio_proactivo,
+    ratio_pasivo,
+    ratio_agresivo,
+  } = req.body;
 
   if (!id_usuario || id_historia === undefined) {
     return res.status(400).json({ error: "Faltan parámetros obligatorios." });
@@ -57,7 +63,11 @@ export const crearInformeAuto = async (req, res) => {
     }
 
     // Generar observación y recomendación automáticas
-    const analisis = generarObservacion({ ratio_proactivo, ratio_pasivo, ratio_agresivo });
+    const analisis = generarObservacion({
+      ratio_proactivo,
+      ratio_pasivo,
+      ratio_agresivo,
+    });
 
     // Armar el JSON de detalle
     const json_detalle = {
@@ -88,7 +98,10 @@ export const crearInformeAuto = async (req, res) => {
         },
         { where: { id_informe: informeExistente[0].id_informe } }
       );
-      return res.json({ message: "Informe actualizado correctamente.", analisis });
+      return res.json({
+        message: "Informe actualizado correctamente.",
+        analisis,
+      });
     } else {
       // Crear nuevo informe
       await Informe.create({

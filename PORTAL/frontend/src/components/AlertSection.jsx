@@ -76,7 +76,6 @@ const styles = {
     boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
     backgroundColor: "#eeeeeeff",
     maxWidth: "1300px",
-    boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
   },
   title: {
     color: "#1C2B29",

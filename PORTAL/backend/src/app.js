@@ -13,7 +13,6 @@ import informesRoutes from "./routes/informes.routes.js";
 import informeRoutes from "./routes/informe.routes.js";
 import decisionRoutes from "./routes/decision.routes.js";
 
-
 dotenv.config();
 
 const app = express();
@@ -38,7 +37,9 @@ app.get("/", (req, res) => {
 sequelize
   .sync()
   .then(() => console.log("Base de datos conectada y sincronizada"))
-  .catch((err) => console.error("Error al conectar con la base de datos:", err));
+  .catch((err) =>
+    console.error("Error al conectar con la base de datos:", err)
+  );
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));

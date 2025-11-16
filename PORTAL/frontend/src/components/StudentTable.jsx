@@ -118,7 +118,7 @@ function StudentTable() {
 /* 🎨 ESTILOS */
 const styles = {
   section: {
-     padding: "1rem",
+    padding: "1rem",
     backgroundColor: "#eeeeeeff",
     borderRadius: "12px",
     margin: "0.1rem auto",

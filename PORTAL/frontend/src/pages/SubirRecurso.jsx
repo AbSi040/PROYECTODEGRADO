@@ -27,9 +27,13 @@ function SubirRecurso() {
     formData.append("archivo", archivo);
 
     try {
-      const res = await axios.post("http://localhost:4000/api/recursos/subir", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post(
+        "http://localhost:4000/api/recursos/subir",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       setMensaje(res.data.message);
       setTitulo("");
       setDescripcion("");
@@ -43,8 +47,8 @@ function SubirRecurso() {
 
   return (
     <div className="portal-container fade-in" style={styles.page}>
-      <Navbar/>
-      
+      <Navbar />
+
       <div style={styles.container}>
         {/* Botón volver */}
         <div style={styles.topBar}>

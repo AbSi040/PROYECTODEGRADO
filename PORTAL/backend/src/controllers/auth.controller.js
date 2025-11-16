@@ -14,7 +14,7 @@ export const register = async (req, res) => {
       login_nombre,
       password_hash: hash,
       id_rol,
-      codigo_anonimo
+      codigo_anonimo,
     });
     res.status(201).json({ message: "Usuario registrado", usuario: nuevo });
   } catch (error) {
@@ -26,8 +26,12 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { login_nombre, password } = req.body;
-    const usuario = await Usuario.findOne({ where: { login_nombre }, include: Rol });
-    if (!usuario) return res.status(404).json({ error: "Usuario no encontrado" });
+    const usuario = await Usuario.findOne({
+      where: { login_nombre },
+      include: Rol,
+    });
+    if (!usuario)
+      return res.status(404).json({ error: "Usuario no encontrado" });
 
     const valid = await bcrypt.compare(password, usuario.password_hash);
     if (!valid) return res.status(401).json({ error: "Contraseña incorrecta" });

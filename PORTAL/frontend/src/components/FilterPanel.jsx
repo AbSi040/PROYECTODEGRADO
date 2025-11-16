@@ -13,7 +13,7 @@ function FilterPanel() {
         alignItems: "center",
         gap: "0.5rem",
         cursor: "pointer",
-        fontWeight: "bold"
+        fontWeight: "bold",
       }}
     >
       <FaSlidersH />

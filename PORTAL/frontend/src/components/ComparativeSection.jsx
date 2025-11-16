@@ -19,14 +19,15 @@ export default function ComparativeSection() {
     fetchData();
   }, []);
 
-  if (loading)
-    return <p style={styles.loading}>⏳ Cargando comparativas...</p>;
+  if (loading) return <p style={styles.loading}>⏳ Cargando comparativas...</p>;
 
   if (!datos.length)
     return (
       <section style={styles.section}>
         <h2 style={styles.title}>📊 Comparativa por curso y paralelo</h2>
-        <p style={styles.empty}>Aún no hay suficientes datos para comparar decisiones.</p>
+        <p style={styles.empty}>
+          Aún no hay suficientes datos para comparar decisiones.
+        </p>
       </section>
     );
 
@@ -39,9 +40,7 @@ export default function ComparativeSection() {
   }));
 
   const max = Math.max(
-    ...cursos.map((d) =>
-      Math.max(d.reflexivas, d.inseguras, d.riesgo)
-    ),
+    ...cursos.map((d) => Math.max(d.reflexivas, d.inseguras, d.riesgo)),
     100
   );
 

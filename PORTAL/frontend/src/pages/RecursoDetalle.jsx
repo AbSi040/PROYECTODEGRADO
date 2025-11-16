@@ -95,7 +95,7 @@ function RecursoDetalle() {
 
   return (
     <div style={styles.page}>
-       <Navbar/>
+      <Navbar />
 
       <div style={styles.topBar}>
         <Link to="/" style={styles.backBtn}>

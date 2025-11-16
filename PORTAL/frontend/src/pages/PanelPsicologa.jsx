@@ -22,15 +22,12 @@ export default function PanelPsicologa() {
   }, []);
 
   return (
-    <div className = "panel-container fade-in" style={styles.page}>
+    <div className="panel-container fade-in" style={styles.page}>
       {/* 🔝 Encabezado */}
       <header style={styles.header}>
         <div style={styles.headerTop}>
           {/* 🔙 Botón Ir al portal */}
-          <button
-            style={styles.portalBtn}
-            onClick={() => navigate("/")}
-          >
+          <button style={styles.portalBtn} onClick={() => navigate("/")}>
             ← Ir al portal
           </button>
 

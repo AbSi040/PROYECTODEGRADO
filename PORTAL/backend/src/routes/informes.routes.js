@@ -20,7 +20,9 @@ router.get("/distribucion", async (req, res) => {
     res.json(rows);
   } catch (error) {
     console.error("Error al obtener distribución:", error);
-    res.status(500).json({ error: "Error al obtener la distribución de clústeres." });
+    res
+      .status(500)
+      .json({ error: "Error al obtener la distribución de clústeres." });
   }
 });
 
@@ -143,7 +145,8 @@ router.get("/estudiantes", async (req, res) => {
 ============================================================================ */
 router.get("/estudiantes/:id", async (req, res) => {
   try {
-    const [rows] = await sequelize.query(`
+    const [rows] = await sequelize.query(
+      `
       SELECT 
         u.login_nombre AS nombre,
         u.curso,
@@ -158,7 +161,9 @@ router.get("/estudiantes/:id", async (req, res) => {
       LEFT JOIN sesion_juego sj ON sj.id_usuario = u.id_usuario
       WHERE u.id_usuario = ?
       GROUP BY u.login_nombre, u.curso, u.paralelo, i.resumen, i.json_detalle;
-    `, { replacements: [req.params.id] });
+    `,
+      { replacements: [req.params.id] }
+    );
 
     if (!rows.length)
       return res.status(404).json({ error: "Estudiante no encontrado." });
@@ -175,7 +180,8 @@ router.get("/estudiantes/:id", async (req, res) => {
 ============================================================================ */
 router.get("/estudiantes/:id/progreso", async (req, res) => {
   try {
-    const [rows] = await sequelize.query(`
+    const [rows] = await sequelize.query(
+      `
       SELECT 
         h.titulo AS historia,
         COALESCE(sj.progreso, 0) AS progreso,
@@ -184,7 +190,9 @@ router.get("/estudiantes/:id/progreso", async (req, res) => {
       LEFT JOIN sesion_juego sj 
         ON sj.id_historia = h.id_historia AND sj.id_usuario = ?
       ORDER BY h.id_historia;
-    `, { replacements: [req.params.id] });
+    `,
+      { replacements: [req.params.id] }
+    );
 
     res.json(rows);
   } catch (error) {
@@ -210,7 +218,7 @@ router.get("/alertas", async (req, res) => {
          OR (JSON_EXTRACT(i.json_detalle, '$.ratio_agresivo') >= 0.4);
     `);
 
-    const alertas = rows.map(r => ({
+    const alertas = rows.map((r) => ({
       id_usuario: r.id_usuario,
       nombre: r.nombre,
       tipo_alerta:

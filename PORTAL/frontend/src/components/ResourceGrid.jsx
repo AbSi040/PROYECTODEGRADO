@@ -21,7 +21,11 @@ function ResourceGrid() {
       return <video src={r.url_origen} style={styles.preview} controls />;
     } else if (r.tipo === "PDF") {
       return (
-        <embed src={r.url_origen} type="application/pdf" style={styles.preview} />
+        <embed
+          src={r.url_origen}
+          type="application/pdf"
+          style={styles.preview}
+        />
       );
     } else if (r.tipo === "AUDIO") {
       return (
@@ -63,20 +67,26 @@ function ResourceGrid() {
 
   return (
     <section style={styles.grid}>
-      {recursos.slice(0, 15).map((r) => ( // ✅ solo mostrar los primeros 15 recursos
-        <div key={r.id_recurso} style={styles.card} className="hover-card">
-          {renderPreview(r)}
-          <h3 style={styles.title}>{r.titulo}</h3>
-          <p style={styles.desc}>{r.descripcion_corta || "Sin descripción"}</p>
+      {recursos.slice(0, 15).map(
+        (
+          r // ✅ solo mostrar los primeros 15 recursos
+        ) => (
+          <div key={r.id_recurso} style={styles.card} className="hover-card">
+            {renderPreview(r)}
+            <h3 style={styles.title}>{r.titulo}</h3>
+            <p style={styles.desc}>
+              {r.descripcion_corta || "Sin descripción"}
+            </p>
 
-          <div style={styles.footer}>
-            <span style={styles.icon}>{getIconForType(r.tipo)}</span>
-            <Link to={`/portal/recurso/${r.id_recurso}`} style={styles.btn}>
-              Ver recurso
-            </Link>
+            <div style={styles.footer}>
+              <span style={styles.icon}>{getIconForType(r.tipo)}</span>
+              <Link to={`/portal/recurso/${r.id_recurso}`} style={styles.btn}>
+                Ver recurso
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      )}
 
       {/* Animación hover */}
       <style>
@@ -110,7 +120,9 @@ function DocPreview({ recurso }) {
         switch (recurso.tipo) {
           case "DOCX":
             try {
-              const result = await mammoth.convertToHtml({ arrayBuffer: buffer });
+              const result = await mammoth.convertToHtml({
+                arrayBuffer: buffer,
+              });
               let textoLimpio = result.value
                 .replace(/<[^>]+>/g, "")
                 .replace(/\s+/g, " ")
@@ -135,12 +147,13 @@ function DocPreview({ recurso }) {
           case "TXT":
           case "RTF":
           case "ODT":
-          case "HTML":
+          case "HTML": {
             const texto = new TextDecoder("utf-8").decode(buffer);
             setContenido(texto.slice(0, 200) + "...");
             break;
+          }
 
-          case "XLSX":
+          case "XLSX": {
             const workbook = XLSX.read(buffer, { type: "array" });
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
             const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
@@ -148,13 +161,17 @@ function DocPreview({ recurso }) {
             const htmlPreview = `
               <table border="1" style="border-collapse:collapse;width:100%;font-size:0.8rem;color:#000;">
                 ${primerasFilas
-                  .map((row) =>
-                    `<tr>${row.map((c) => `<td>${c || ""}</td>`).join("")}</tr>`
+                  .map(
+                    (row) =>
+                      `<tr>${row
+                        .map((c) => `<td>${c || ""}</td>`)
+                        .join("")}</tr>`
                   )
                   .join("")}
               </table>`;
             setContenido(htmlPreview);
             break;
+          }
 
           default:
             setContenido("Vista previa no disponible.");

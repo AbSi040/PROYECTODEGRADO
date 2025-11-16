@@ -13,12 +13,20 @@ router.post("/login", async (req, res) => {
     const usuario = await Usuario.findOne({ where: { login_nombre: nombre } });
 
     if (!usuario) {
-      return res.status(404).json({ success: false, message: "Usuario no encontrado. Por favor, regístrese." });
+      return res.status(404).json({
+        success: false,
+        message: "Usuario no encontrado. Por favor, regístrese.",
+      });
     }
 
-    const validPassword = await bcrypt.compare(contrasena, usuario.password_hash);
+    const validPassword = await bcrypt.compare(
+      contrasena,
+      usuario.password_hash
+    );
     if (!validPassword) {
-      return res.status(401).json({ success: false, message: "Contraseña incorrecta." });
+      return res
+        .status(401)
+        .json({ success: false, message: "Contraseña incorrecta." });
     }
 
     return res.json({
@@ -29,7 +37,9 @@ router.post("/login", async (req, res) => {
     });
   } catch (error) {
     console.error("Error en login:", error);
-    return res.status(500).json({ success: false, message: "Error interno del servidor" });
+    return res
+      .status(500)
+      .json({ success: false, message: "Error interno del servidor" });
   }
 });
 
@@ -39,21 +49,23 @@ router.post("/register", async (req, res) => {
     const { nombre, contrasena, curso, paralelo } = req.body;
 
     if (!nombre || !contrasena) {
-      return res.status(400).json({ success: false, message: "Debe llenar todos los campos." });
+      return res
+        .status(400)
+        .json({ success: false, message: "Debe llenar todos los campos." });
     }
 
     // Verificar si el usuario ya existe
     const existe = await Usuario.findOne({ where: { login_nombre: nombre } });
     if (existe) {
-      return res.status(400).json({ success: false, message: "El usuario ya existe." });
+      return res
+        .status(400)
+        .json({ success: false, message: "El usuario ya existe." });
     }
-
 
     const hashedPassword = await bcrypt.hash(contrasena, 10);
 
-
     const nuevo = await Usuario.create({
-      id_rol: 1, 
+      id_rol: 1,
       login_nombre: nombre,
       password_hash: hashedPassword,
       curso,
@@ -66,10 +78,11 @@ router.post("/register", async (req, res) => {
       message: "Usuario registrado correctamente",
       id_usuario: nuevo.id_usuario,
     });
-
   } catch (error) {
     console.error("Error en registro:", error);
-    return res.status(500).json({ success: false, message: "Error interno del servidor" });
+    return res
+      .status(500)
+      .json({ success: false, message: "Error interno del servidor" });
   }
 });
 

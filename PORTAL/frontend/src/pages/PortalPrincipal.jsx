@@ -4,7 +4,6 @@ import ResourceGrid from "../components/ResourceGrid";
 import SearchBar from "../components/SearchBar";
 import Navbar from "../components/Navbar";
 
-
 const PortalPrincipal = () => {
   const [resources, setResources] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,7 +20,7 @@ const PortalPrincipal = () => {
 
   return (
     <div className="portal-container fade-in">
-      <Navbar/>
+      <Navbar />
       {/* HEADER con Navbar (el texto y botón de subir recurso solo se muestran aquí) */}
       <Header />
       {/* CUERPO PRINCIPAL */}
@@ -34,7 +33,6 @@ const PortalPrincipal = () => {
         {/* Contenedor de recursos */}
         <section className="resources-section">
           <ResourceGrid />
-
         </section>
       </main>
     </div>

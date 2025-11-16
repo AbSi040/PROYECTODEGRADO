@@ -9,7 +9,6 @@ const Header = () => {
 
   return (
     <header className="portal-header fade-in">
-    
       {/* Contenido visible solo en la página principal */}
       {isHome && (
         <div className="header-main">
@@ -22,7 +21,7 @@ const Header = () => {
             justa.
           </p>
           <Link to="/subir" className="btn-primary">
-             Subir recurso
+            Subir recurso
           </Link>
         </div>
       )}

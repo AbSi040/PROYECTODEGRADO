@@ -53,7 +53,11 @@ function InformeDetalle() {
   };
 
   if (loading)
-    return <p style={{ textAlign: "center", marginTop: "3rem" }}>Cargando informe...</p>;
+    return (
+      <p style={{ textAlign: "center", marginTop: "3rem" }}>
+        Cargando informe...
+      </p>
+    );
   if (!estudiante)
     return (
       <p style={{ textAlign: "center", marginTop: "3rem" }}>
@@ -72,7 +76,8 @@ function InformeDetalle() {
         <div style={styles.headerText}>
           <h1 style={styles.headerTitle}>Informe individual del estudiante</h1>
           <p style={styles.headerSubtitle}>
-            Visualiza el progreso, observaciones y recomendaciones generadas por el sistema.
+            Visualiza el progreso, observaciones y recomendaciones generadas por
+            el sistema.
           </p>
         </div>
 
@@ -100,19 +105,35 @@ function InformeDetalle() {
         {/* 🧾 Datos generales */}
         <div style={styles.infoBox}>
           <h2 style={styles.sectionTitle}>🧾 Datos generales</h2>
-          <p><strong>Nombre:</strong> {estudiante.nombre}</p>
-          <p><strong>Curso:</strong> {estudiante.curso}</p>
-          <p><strong>Paralelo:</strong> {estudiante.paralelo || "—"}</p>
-          <p><strong>Clúster asignado:</strong> {estudiante.cluster || "Sin clasificar"}</p>
-          <p><strong>Resultado final:</strong> {estudiante.resultado_final || "Pendiente"}</p>
-          <p><strong>Fecha del informe:</strong> {estudiante.generado_en?.split("T")[0] || "—"}</p>
+          <p>
+            <strong>Nombre:</strong> {estudiante.nombre}
+          </p>
+          <p>
+            <strong>Curso:</strong> {estudiante.curso}
+          </p>
+          <p>
+            <strong>Paralelo:</strong> {estudiante.paralelo || "—"}
+          </p>
+          <p>
+            <strong>Clúster asignado:</strong>{" "}
+            {estudiante.cluster || "Sin clasificar"}
+          </p>
+          <p>
+            <strong>Resultado final:</strong>{" "}
+            {estudiante.resultado_final || "Pendiente"}
+          </p>
+          <p>
+            <strong>Fecha del informe:</strong>{" "}
+            {estudiante.generado_en?.split("T")[0] || "—"}
+          </p>
         </div>
 
         {/* 📊 Progreso global */}
         <div style={styles.card}>
           <h2 style={styles.sectionTitle}>📊 Progreso global</h2>
           <p style={styles.text}>
-            Avance total en el videojuego: <strong>{estudiante.progreso || 0}%</strong>
+            Avance total en el videojuego:{" "}
+            <strong>{estudiante.progreso || 0}%</strong>
           </p>
           <div style={styles.progressBarContainer}>
             <div
@@ -134,7 +155,9 @@ function InformeDetalle() {
           ) : (
             progresos.map((p, i) => (
               <div key={i} style={{ marginBottom: "1rem" }}>
-                <p style={{ fontWeight: "bold", color: "#FFDAB3" }}>{p.historia}</p>
+                <p style={{ fontWeight: "bold", color: "#FFDAB3" }}>
+                  {p.historia}
+                </p>
                 <div style={styles.progressBarContainer}>
                   <div
                     style={{
@@ -144,7 +167,13 @@ function InformeDetalle() {
                     }}
                   ></div>
                 </div>
-                <p style={{ fontSize: "0.9rem", color: "#fff", marginTop: "0.2rem" }}>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: "#fff",
+                    marginTop: "0.2rem",
+                  }}
+                >
                   Avance: {p.progreso}%
                 </p>
               </div>
@@ -172,12 +201,15 @@ function InformeDetalle() {
         <div style={styles.card}>
           <h2 style={styles.sectionTitle}>🧩 Decisiones clave</h2>
           <p style={styles.text}>
-            Aquí se mostrarán las decisiones más representativas del estudiante una vez que el
-            juego registre sus elecciones en la base de datos.
+            Aquí se mostrarán las decisiones más representativas del estudiante
+            una vez que el juego registre sus elecciones en la base de datos.
           </p>
           <ul style={styles.decisionList}>
             <li>Ejemplo: “Intervino para evitar un conflicto.” (Proactiva)</li>
-            <li>Ejemplo: “Evitó involucrarse ante una situación de acoso.” (Evasiva)</li>
+            <li>
+              Ejemplo: “Evitó involucrarse ante una situación de acoso.”
+              (Evasiva)
+            </li>
           </ul>
         </div>
 
@@ -363,18 +395,6 @@ const styles = {
     fontWeight: "bold",
     marginBottom: "0.8rem",
     fontSize: "0.95rem",
-  },
-  logoutBtn: {
-    backgroundColor: "#C57A3D",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    padding: "0.7rem 1.2rem",
-    fontWeight: "bold",
-    cursor: "pointer",
-    width: "100%",
-    fontSize: "0.9rem",
-    transition: "all 0.3s ease",
   },
 };
 

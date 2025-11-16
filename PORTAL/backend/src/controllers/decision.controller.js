@@ -5,7 +5,9 @@ export const guardarDecision = async (req, res) => {
     const { nombreUsuario, historia, idDecision } = req.body;
 
     if (!nombreUsuario || !historia || !idDecision) {
-      return res.status(400).json({ success: false, message: "Datos incompletos." });
+      return res
+        .status(400)
+        .json({ success: false, message: "Datos incompletos." });
     }
 
     // Buscar usuario por nombre
@@ -15,7 +17,9 @@ export const guardarDecision = async (req, res) => {
     );
 
     if (!usuario) {
-      return res.status(404).json({ success: false, message: "Usuario no encontrado." });
+      return res
+        .status(404)
+        .json({ success: false, message: "Usuario no encontrado." });
     }
 
     // Insertar decisión
@@ -28,6 +32,8 @@ export const guardarDecision = async (req, res) => {
     res.json({ success: true, message: "Decisión guardada correctamente." });
   } catch (error) {
     console.error("Error al guardar decisión:", error);
-    res.status(500).json({ success: false, message: "Error interno del servidor." });
+    res
+      .status(500)
+      .json({ success: false, message: "Error interno del servidor." });
   }
 };
