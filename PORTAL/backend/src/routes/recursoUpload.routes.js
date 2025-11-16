@@ -6,12 +6,12 @@ import { QueryTypes } from "sequelize";
 const router = express.Router();
 
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 router.post("/recursos/subir", upload.single("archivo"), async (req, res) => {
   try {
     const { titulo, descripcion_corta, tipo, autor_fuente } = req.body;
-    const archivo = req.file ? req.file.buffer : null;
+    const archivo = req.file ? Buffer.from(req.file.buffer) : null;
 
     if (!archivo) {
       return res.status(400).json({ message: "No se recibió ningún archivo." });
@@ -22,14 +22,11 @@ router.post("/recursos/subir", upload.single("archivo"), async (req, res) => {
        VALUES (?, ?, ?, ?, ?, NOW())`,
       {
         replacements: [titulo, descripcion_corta, tipo, autor_fuente, archivo],
-        type: QueryTypes.INSERT, // 👈 AÑADIDO
+        type: QueryTypes.INSERT,
       }
     );
 
-    // 👈 RESPUESTA JSON CORRECTA
-    return res.status(201).json({
-      message: "Recurso guardado correctamente.",
-    });
+    return res.status(201).json({ message: "Recurso guardado correctamente." });
   } catch (error) {
     console.error("Error al subir recurso:", error);
     return res.status(500).json({ message: "Error al subir recurso." });

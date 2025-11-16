@@ -16,9 +16,22 @@ import decisionRoutes from "./routes/decision.routes.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// CORS FIX
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://elecodetusdecisionesportal.onrender.com",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
 
 // Rutas
 app.use("/api/auth", authRoutes);
@@ -31,9 +44,10 @@ app.use("/api/informe", informeRoutes);
 app.use("/api/decisiones", decisionRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Servidor backend funcionando correctamente ");
+  res.send("Servidor backend funcionando correctamente");
 });
 
+// DB
 sequelize
   .sync()
   .then(() => console.log("Base de datos conectada y sincronizada"))
@@ -41,5 +55,6 @@ sequelize
     console.error("Error al conectar con la base de datos:", err)
   );
 
+// Server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
