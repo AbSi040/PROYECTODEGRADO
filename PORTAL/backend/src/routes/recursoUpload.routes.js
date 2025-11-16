@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import { sequelize } from "../config/database.js";
+import { QueryTypes } from "sequelize";
 
 const router = express.Router();
 
@@ -21,13 +22,17 @@ router.post("/recursos/subir", upload.single("archivo"), async (req, res) => {
        VALUES (?, ?, ?, ?, ?, NOW())`,
       {
         replacements: [titulo, descripcion_corta, tipo, autor_fuente, archivo],
+        type: QueryTypes.INSERT, // 👈 AÑADIDO
       }
     );
 
-    res.status(201).json({ message: "Recurso guardado correctamente." });
+    // 👈 RESPUESTA JSON CORRECTA
+    return res.status(201).json({
+      message: "Recurso guardado correctamente.",
+    });
   } catch (error) {
     console.error("Error al subir recurso:", error);
-    res.status(500).json({ message: "Error al subir recurso." });
+    return res.status(500).json({ message: "Error al subir recurso." });
   }
 });
 
