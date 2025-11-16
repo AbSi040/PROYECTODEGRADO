@@ -122,22 +122,15 @@ export const crearInformeAuto = async (req, res) => {
 /**
  * 📄 Obtener todos los informes existentes (para depuración o pruebas)
  */
-export const listarInformes = async (req, res) => {
+export async function listarInformes() {
   try {
-    const [rows] = await sequelize.query(`
-      SELECT 
-        i.id_informe,
-        u.login_nombre AS estudiante,
-        i.resumen,
-        i.json_detalle,
-        i.generado_en
-      FROM informe i
-      JOIN usuario u ON u.id_usuario = i.id_usuario
-      ORDER BY i.generado_en DESC;
-    `);
-    res.json(rows);
+    const informes = await Informe.findAll({
+      order: [["generado_en", "DESC"]],
+    });
+
+    return informes;
   } catch (error) {
-    console.error("Error al listar informes:", error);
-    res.status(500).json({ error: "Error al listar informes." });
+    console.error("❌ Error al obtener informes:", error);
+    throw error;
   }
-};
+}
