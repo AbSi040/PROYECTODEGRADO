@@ -12,6 +12,9 @@ import menuRoutes from "./routes/menu.routes.js";
 import informesRoutes from "./routes/informes.routes.js";
 import informeRoutes from "./routes/informe.routes.js";
 import decisionRoutes from "./routes/decision.routes.js";
+import "./models/associations.js";
+import "./models/usuario.model.js";
+import "./models/rol.model.js";
 
 dotenv.config();
 
@@ -47,10 +50,9 @@ app.get("/", (req, res) => {
   res.send("Servidor backend funcionando correctamente");
 });
 
-// DB
 sequelize
-  .sync()
-  .then(() => console.log("Base de datos conectada y sincronizada"))
+  .authenticate()
+  .then(() => console.log("Base de datos conectada correctamente"))
   .catch((err) =>
     console.error("Error al conectar con la base de datos:", err)
   );

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 using UnityEngine.Networking;
-using System.Text.RegularExpressions;
+using System.Text;
 
 public class RegisterManager : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class RegisterManager : MonoBehaviour
     public TMP_InputField inputParalelo;
     public TextMeshProUGUI textoMensaje;
 
-    private string apiURL = "http://127.0.0.1:4000/api/auth/register";
+    private string apiURL = "http://localhost:4000/api/auth/register";
 
     public void OnRegisterButton()
     {
@@ -23,24 +23,9 @@ public class RegisterManager : MonoBehaviour
         string curso = inputCurso.text.Trim();
         string paralelo = inputParalelo.text.Trim().ToUpper();
 
-        // --- VALIDACIONES ---
-        // Nombre solo letras y espacios
-        if (!Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+        if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(contrasena))
         {
-            textoMensaje.text = "El nombre solo debe contener letras (sin números ni símbolos).";
-            return;
-        }
-
-        // Paralelo solo A, B o C
-        if (!Regex.IsMatch(paralelo, @"^[ABC]$"))
-        {
-            textoMensaje.text = "El paralelo debe ser A, B o C.";
-            return;
-        }
-
-        if (string.IsNullOrEmpty(contrasena))
-        {
-            textoMensaje.text = "Debe ingresar una contraseña.";
+            textoMensaje.text = "Debe llenar todos los campos.";
             return;
         }
 
@@ -49,13 +34,18 @@ public class RegisterManager : MonoBehaviour
 
     IEnumerator RegistroRequest(string nombre, string contrasena, string curso, string paralelo)
     {
-        Usuario nuevoUsuario = new Usuario(nombre, contrasena, curso, paralelo);
-        string jsonData = JsonUtility.ToJson(nuevoUsuario);
+        RegisterData data = new RegisterData();
+        data.login_nombre = nombre;
+        data.password = contrasena;
+        data.curso = curso;
+        data.paralelo = paralelo;
 
-        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(apiURL, "POST"))
+        string jsonData = JsonUtility.ToJson(data);
+
+        using (UnityWebRequest www = new UnityWebRequest(apiURL, "POST"))
         {
-            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
-            www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            byte[] raw = Encoding.UTF8.GetBytes(jsonData);
+            www.uploadHandler = new UploadHandlerRaw(raw);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
 
@@ -63,10 +53,11 @@ public class RegisterManager : MonoBehaviour
 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                ResponseRegister response = JsonUtility.FromJson<ResponseRegister>(www.downloadHandler.text);
+                RegistroResponse response = JsonUtility.FromJson<RegistroResponse>(www.downloadHandler.text);
+
                 textoMensaje.text = response.message;
 
-                if (response.success)
+                if (response.message.Contains("correctamente"))
                 {
                     yield return new WaitForSeconds(1.5f);
                     SceneManager.LoadScene("LoginScene");
@@ -80,27 +71,19 @@ public class RegisterManager : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Usuario
+    public class RegisterData
     {
-        public string nombre;
-        public string contrasena;
+        public string login_nombre;
+        public string password;
         public string curso;
         public string paralelo;
-
-        public Usuario(string n, string c, string cu, string p)
-        {
-            nombre = n;
-            contrasena = c;
-            curso = cu;
-            paralelo = p;
-        }
     }
 
     [System.Serializable]
-    public class ResponseRegister
+    public class RegistroResponse
     {
-        public bool success;
         public string message;
+        public int id_usuario;
     }
 
     public void OnBackToLogin()

@@ -4,18 +4,15 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 using UnityEngine.Networking;
+using System.Text;
 
 public class LoginManager : MonoBehaviour
 {
-    [Header("Campos de Entrada")]
     public TMP_InputField inputNombre;
     public TMP_InputField inputContrasena;
-
-    [Header("Mensajes")]
     public TextMeshProUGUI textoMensaje;
 
     private string apiURL = "http://localhost:4000/api/auth/login";
-
 
     public void OnLoginButton()
     {
@@ -33,13 +30,16 @@ public class LoginManager : MonoBehaviour
 
     IEnumerator LoginRequest(string nombre, string contrasena)
     {
-        // Crear el JSON
-        string jsonData = JsonUtility.ToJson(new Usuario(nombre, contrasena));
+        LoginData data = new LoginData();
+        data.login_nombre = nombre;
+        data.password = contrasena;
 
-        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(apiURL, "POST"))
+        string jsonData = JsonUtility.ToJson(data);
+
+        using (UnityWebRequest www = new UnityWebRequest(apiURL, "POST"))
         {
-            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
-            www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            byte[] raw = Encoding.UTF8.GetBytes(jsonData);
+            www.uploadHandler = new UploadHandlerRaw(raw);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
 
@@ -47,18 +47,23 @@ public class LoginManager : MonoBehaviour
 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                ResponseLogin response = JsonUtility.FromJson<ResponseLogin>(www.downloadHandler.text);
+                LoginResponse response = JsonUtility.FromJson<LoginResponse>(www.downloadHandler.text);
 
-                if (response.success)
+                if (!string.IsNullOrEmpty(response.token))
                 {
-                    textoMensaje.text = "Inicio de sesión correcto.";
-                    PlayerPrefs.SetString("Usuario", response.nombre);
+                    // Guardar datos importantes
+                    PlayerPrefs.SetString("token", response.token);
+                    PlayerPrefs.SetInt("id_usuario", response.id_usuario);
+                    PlayerPrefs.SetString("usuario", response.login_nombre);
+                    PlayerPrefs.SetString("codigo_anonimo", response.codigo_anonimo);
+
+                    textoMensaje.text = "Inicio de Sesión Correcto";
                     yield return new WaitForSeconds(1f);
                     SceneManager.LoadScene("MainMenuScene");
                 }
                 else
                 {
-                    textoMensaje.text = response.message;
+                    textoMensaje.text = "Credenciales inválidas";
                 }
             }
             else
@@ -69,19 +74,20 @@ public class LoginManager : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Usuario
+    public class LoginData
     {
-        public string nombre;
-        public string contrasena;
-        public Usuario(string n, string c) { nombre = n; contrasena = c; }
+        public string login_nombre;
+        public string password;
     }
 
     [System.Serializable]
-    public class ResponseLogin
+    public class LoginResponse
     {
-        public bool success;
-        public string message;
-        public string nombre;
+        public string token;
+        public int id_usuario;
+        public string login_nombre;
+        public string codigo_anonimo;
+        public string rol;
     }
 
     public void OnRegisterButton()
