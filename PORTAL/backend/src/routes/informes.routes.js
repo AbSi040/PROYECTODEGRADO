@@ -4,6 +4,21 @@ import { sequelize } from "../config/database.js";
 
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.json({
+    endpoints: [
+      "/api/informes/distribucion",
+      "/api/informes/progreso",
+      "/api/informes/decisiones",
+      "/api/informes/comparativa",
+      "/api/informes/estudiantes",
+      "/api/informes/estudiantes/:id",
+      "/api/informes/estudiantes/:id/progreso",
+      "/api/informes/alertas",
+    ],
+  });
+});
+
 /* ============================================================================
    🟩 1️⃣ DISTRIBUCIÓN DE ESTUDIANTES POR CLÚSTER
 ============================================================================ */
