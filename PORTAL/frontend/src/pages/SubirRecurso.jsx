@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
 import Navbar from "../components/Navbar";
+import api from "../services/api"; // ✅ Backend centralizado
 
 function SubirRecurso() {
   const [titulo, setTitulo] = useState("");
@@ -12,10 +11,43 @@ function SubirRecurso() {
   const [archivo, setArchivo] = useState(null);
   const [mensaje, setMensaje] = useState("");
 
+  // ===================== VALIDACIÓN ===================== //
+  const validarArchivo = (file) => {
+    if (!file) return "Selecciona un archivo.";
+
+    const maxSize = 20 * 1024 * 1024; // 20 MB
+    if (file.size > maxSize) return "El archivo supera el límite de 20MB.";
+
+    const extensionesPermitidas = {
+      PDF: ["pdf"],
+      DOCX: ["docx"],
+      TXT: ["txt"],
+      RTF: ["rtf"],
+      ODT: ["odt"],
+      HTML: ["html"],
+      XLSX: ["xlsx"],
+      IMAGE: ["png", "jpg", "jpeg"],
+      INFOGRAFIA: ["png", "jpg", "jpeg"],
+      VIDEO: ["mp4"],
+      AUDIO: ["mp3", "wav", "ogg"],
+    };
+
+    const ext = file.name.split(".").pop().toLowerCase();
+    const validas = extensionesPermitidas[tipo];
+
+    if (!validas.includes(ext))
+      return `El archivo debe ser de tipo: ${validas.join(", ")}`;
+
+    return null;
+  };
+
+  // ===================== ENVÍO ===================== //
   const manejarEnvio = async (e) => {
     e.preventDefault();
-    if (!archivo) {
-      setMensaje("Selecciona un archivo antes de subir.");
+
+    const error = validarArchivo(archivo);
+    if (error) {
+      setMensaje(error);
       return;
     }
 
@@ -27,30 +59,20 @@ function SubirRecurso() {
     formData.append("archivo", archivo);
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/recursos/subir`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const res = await api.post("/recursos/subir", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
-      if (res.data && res.data.message) {
-        setMensaje(res.data.message);
-      } else {
-        setMensaje("Recurso subido correctamente.");
-      }
+      setMensaje(res.data?.message || "Recurso subido correctamente.");
 
-      // No limpies los campos antes de mostrar el mensaje
-      // Dale tiempo al mensaje para aparecer
       setTimeout(() => {
         setTitulo("");
         setDescripcion("");
         setAutor("");
         setArchivo(null);
-      }, 500);
+      }, 800);
     } catch (error) {
-      console.error(error);
+      console.error("❌ Error al subir recurso:", error);
       setMensaje("Error al subir el recurso.");
     }
   };
@@ -62,13 +84,14 @@ function SubirRecurso() {
       <div style={styles.container}>
         {/* Botón volver */}
         <div style={styles.topBar}>
-          <Link to="/ " style={styles.btnVolver}>
+          <Link to="/" style={styles.btnVolver}>
             ← Volver
           </Link>
         </div>
 
-        {/* Formulario */}
         <h2 style={styles.title}>Subir nuevo recurso</h2>
+
+        {/* Formulario */}
         <form onSubmit={manejarEnvio} style={styles.form}>
           <input
             type="text"
@@ -78,12 +101,14 @@ function SubirRecurso() {
             style={styles.input}
             required
           />
+
           <textarea
             placeholder="Descripción corta"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
             style={{ ...styles.input, height: "100px" }}
           />
+
           <select
             value={tipo}
             onChange={(e) => setTipo(e.target.value)}
@@ -101,6 +126,7 @@ function SubirRecurso() {
             <option value="VIDEO">Video</option>
             <option value="AUDIO">Audio</option>
           </select>
+
           <input
             type="text"
             placeholder="Autor o fuente"
@@ -108,11 +134,13 @@ function SubirRecurso() {
             onChange={(e) => setAutor(e.target.value)}
             style={styles.input}
           />
+
           <input
             type="file"
             onChange={(e) => setArchivo(e.target.files[0])}
             style={styles.inputFile}
           />
+
           <button type="submit" style={styles.btnSubir}>
             Subir recurso
           </button>
@@ -120,67 +148,22 @@ function SubirRecurso() {
 
         {mensaje && <p style={styles.message}>{mensaje}</p>}
       </div>
-
-      {/* Estilos adicionales responsive */}
-      <style>
-        {`
-          @media (max-width: 1024px) {
-            h2 {
-              font-size: 1.8rem !important;
-            }
-          }
-
-          @media (max-width: 768px) {
-            form {
-              width: 90% !important;
-              padding: 1rem !important;
-            }
-
-            input, textarea, select {
-              font-size: 1rem !important;
-            }
-
-
-          @media (max-width: 480px) {
-            h2 {
-              font-size: 1.4rem !important;
-            }
-
-            form {
-              width: 95% !important;
-              padding: 0.8rem !important;
-            }
-
-            input, textarea, select {
-              font-size: 0.9rem !important;
-              padding: 0.6rem 0.8rem !important;
-            }
-
-            button {
-              font-size: 0.9rem;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 }
 
+/* 🎨 ESTILOS */
 const styles = {
   page: {
     backgroundColor: "#D9D9D9",
     minHeight: "100vh",
-    fontFamily: "'Quicksand', sans-serif",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
     paddingTop: "4rem",
+    alignItems: "center",
   },
   container: {
     width: "100%",
     maxWidth: "900px",
     padding: "2rem",
-    boxSizing: "border-box",
   },
   topBar: {
     display: "flex",
@@ -190,14 +173,11 @@ const styles = {
   btnVolver: {
     backgroundColor: "#C57A3D",
     color: "white",
-    border: "none",
     padding: "0.6rem 1.2rem",
     borderRadius: "10px",
-    cursor: "pointer",
-    fontWeight: "bold",
     textDecoration: "none",
-    boxShadow: "0 3px 6px rgba(0,0,0,0.25)",
-    transition: "all 0.3s ease",
+    fontWeight: "bold",
+    transition: "0.2s",
   },
   title: {
     textAlign: "center",
@@ -214,36 +194,27 @@ const styles = {
     flexDirection: "column",
     gap: "1rem",
     boxShadow: "0 3px 8px rgba(0,0,0,0.25)",
-    width: "100%",
-    maxWidth: "700px",
-    margin: "0 auto",
   },
   input: {
     padding: "0.8rem 1rem",
     borderRadius: "10px",
     border: "none",
-    outline: "none",
     backgroundColor: "#D9D9D9",
     color: "#4E3B2B",
-    fontSize: "1rem",
   },
   inputFile: {
     padding: "0.6rem",
     backgroundColor: "#E0E0E0",
     borderRadius: "10px",
-    fontSize: "1rem",
   },
   btnSubir: {
     backgroundColor: "#C57A3D",
     color: "white",
-    border: "none",
-    padding: "0.9rem 1.6rem",
+    padding: "0.9rem",
     borderRadius: "12px",
-    cursor: "pointer",
     fontWeight: "bold",
     fontSize: "1.1rem",
-    boxShadow: "0 3px 8px rgba(0,0,0,0.25)",
-    transition: "all 0.3s ease",
+    cursor: "pointer",
   },
   message: {
     marginTop: "1.5rem",
@@ -253,18 +224,7 @@ const styles = {
     backgroundColor: "#fff",
     borderRadius: "10px",
     padding: "0.8rem",
-    boxShadow: "0 2px 5px rgba(0,0,0,0.15)",
   },
 };
-
-// Hover
-const hoverStyle = document.createElement("style");
-hoverStyle.innerHTML = `
-  button:hover, a:hover {
-    transform: scale(1.05);
-    background-color: #A86430 !important;
-  }
-`;
-document.head.appendChild(hoverStyle);
 
 export default SubirRecurso;

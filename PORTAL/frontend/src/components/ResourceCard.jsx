@@ -1,29 +1,58 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FaFilePdf, FaImage, FaVideo } from "react-icons/fa6";
+import { FaFilePdf, FaImage, FaVideo, FaFileAlt } from "react-icons/fa";
+import api from "../services/api";
+
+/**
+ * Tarjeta visual para cada recurso en la grilla.
+ * Ahora muestra:
+ *  - preview REAL del archivo (PDF, IMG, VIDEO, AUDIO)
+ *  - info de violencia y categoría
+ *  - botón "Ver recurso"
+ *  - navegación funcional sin errores
+ */
 
 function ResourceCard({ recurso }) {
   const navigate = useNavigate();
+
+  // 🔗 URL real donde Render sirve el archivo
+  const fileUrl = `${import.meta.env.VITE_API_URL}/recursos/${
+    recurso.id_recurso
+  }/archivo`;
 
   const handleClick = () => {
     navigate(`/portal/recurso/${recurso.id_recurso}`);
   };
 
-  // 🔹 Determinar ícono según tipo
+  // ============================================================
+  // ÍCONO según tipo
+  // ============================================================
   const getIcon = () => {
-    if (recurso.tipo === "PDF")
-      return <FaFilePdf style={{ marginRight: "6px" }} />;
-    if (recurso.tipo === "VIDEO")
-      return <FaVideo style={{ marginRight: "6px" }} />;
-    return <FaImage style={{ marginRight: "6px" }} />;
+    switch (recurso.tipo) {
+      case "PDF":
+        return <FaFilePdf style={{ marginRight: "6px" }} />;
+      case "VIDEO":
+        return <FaVideo style={{ marginRight: "6px" }} />;
+      case "IMAGE":
+      case "INFOGRAFIA":
+        return <FaImage style={{ marginRight: "6px" }} />;
+      default:
+        return <FaFileAlt style={{ marginRight: "6px" }} />;
+    }
   };
 
-  // 🔹 Mostrar vista previa según tipo
+  // ============================================================
+  // PREVIEW real según tipo
+  // ============================================================
   const renderPreview = () => {
+    const archivoURL = `${import.meta.env.VITE_API_URL}/recursos/${
+      recurso.id_recurso
+    }/archivo`;
+
     if (recurso.tipo === "VIDEO") {
       return (
         <video
-          src={recurso.url_origen}
+          src={archivoURL}
           controls={false}
           style={{
             width: "100%",
@@ -36,10 +65,11 @@ function ResourceCard({ recurso }) {
         />
       );
     }
+
     if (recurso.tipo === "IMAGE" || recurso.tipo === "INFOGRAFIA") {
       return (
         <img
-          src={recurso.url_origen}
+          src={archivoURL}
           alt={recurso.titulo}
           style={{
             width: "100%",
@@ -47,10 +77,28 @@ function ResourceCard({ recurso }) {
             borderTopLeftRadius: "12px",
             borderTopRightRadius: "12px",
             objectFit: "cover",
+            backgroundColor: "#111",
           }}
         />
       );
     }
+
+    if (recurso.tipo === "PDF") {
+      return (
+        <embed
+          src={archivoURL}
+          type="application/pdf"
+          style={{
+            width: "100%",
+            height: "200px",
+            borderTopLeftRadius: "12px",
+            borderTopRightRadius: "12px",
+            backgroundColor: "#111",
+          }}
+        />
+      );
+    }
+
     return (
       <div
         style={{
@@ -70,7 +118,6 @@ function ResourceCard({ recurso }) {
       </div>
     );
   };
-
   return (
     <div
       className="recurso-card"
@@ -101,7 +148,6 @@ function ResourceCard({ recurso }) {
             fontWeight: "600",
             color: "#F5CDAA",
             marginBottom: "0.3rem",
-            textTransform: "uppercase",
           }}
         >
           {recurso.titulo}
@@ -116,7 +162,7 @@ function ResourceCard({ recurso }) {
         >
           {recurso.descripcion_corta?.length > 60
             ? recurso.descripcion_corta.substring(0, 60) + "..."
-            : recurso.descripcion_corta}
+            : recurso.descripcion_corta || "Sin descripción."}
         </p>
 
         <div

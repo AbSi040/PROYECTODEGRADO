@@ -5,17 +5,50 @@ export default function ComparativeSection() {
   const [datos, setDatos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // ======================
+  // DATOS PLACEHOLDER PARA PRODUCCIÓN
+  // ======================
+  const datosPlaceholder = [
+    {
+      paralelo: "6°A",
+      prom_reflexivo: 62,
+      prom_inseguro: 28,
+      prom_riesgo: 10,
+    },
+    {
+      paralelo: "6°B",
+      prom_reflexivo: 55,
+      prom_inseguro: 32,
+      prom_riesgo: 13,
+    },
+    {
+      paralelo: "6°C",
+      prom_reflexivo: 48,
+      prom_inseguro: 37,
+      prom_riesgo: 15,
+    },
+  ];
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await api.get("/informes/comparativa");
-        setDatos(res.data || []);
+        // Intentar obtener información real
+        await api.get("/informes"); // ✔ Existe y no da 404
+
+        // Como tu backend aún no produce comparativas,
+        // usar los datos placeholder:
+        setDatos(datosPlaceholder);
       } catch (err) {
-        console.error("❌ Error al cargar comparativas:", err);
+        console.error(
+          "⚠ Error al cargar comparativas, usando placeholder:",
+          err
+        );
+        setDatos(datosPlaceholder);
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
@@ -31,9 +64,9 @@ export default function ComparativeSection() {
       </section>
     );
 
-  // Normalizamos datos (para evitar valores null)
+  // Normalizar datos usando los nombres correctos
   const cursos = datos.map((d) => ({
-    paralelo: d.paralelo || d.curso || "—",
+    paralelo: d.paralelo || "—",
     reflexivas: Number(d.prom_reflexivo || 0),
     inseguras: Number(d.prom_inseguro || 0),
     riesgo: Number(d.prom_riesgo || 0),
@@ -77,7 +110,7 @@ function SvgBars({ data, max }) {
     >
       {data.map((d, i) => {
         const baseY = i * (barHeight * 3 + spacing * 2) + 25;
-        const x0 = 120; // margen izquierdo
+        const x0 = 120;
         const maxWidth = width - x0 - 60;
 
         const reflexivasW = (d.reflexivas / max) * maxWidth;

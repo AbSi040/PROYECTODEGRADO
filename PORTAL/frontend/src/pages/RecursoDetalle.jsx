@@ -1,97 +1,127 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 import * as mammoth from "mammoth";
 import * as XLSX from "xlsx";
 import Navbar from "../components/Navbar";
+import api from "../services/api"; // ✅ USO CORRECTO DEL BACKEND
 
 function RecursoDetalle() {
   const { id } = useParams();
   const [recurso, setRecurso] = useState(null);
   const [contenido, setContenido] = useState("");
 
+  // 👇 URL REAL del archivo en el backend
+  const getFileUrl = (id) =>
+    `${import.meta.env.VITE_API_URL}/recursos/${id}/archivo`;
+
+  // ======================================================
+  // 1. Cargar la info del recurso
+  // ======================================================
   useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/recursos/${id}`)
+    api
+      .get(`/recursos/${id}`)
       .then((res) => setRecurso(res.data))
       .catch((err) => console.error("Error al cargar recurso:", err));
   }, [id]);
 
+  // ======================================================
+  // 2. Cargar vista previa del archivo
+  // ======================================================
   useEffect(() => {
     if (!recurso) return;
 
     const cargarVista = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:4000/api/recursos/${recurso.id_recurso}/descargar`,
-          { responseType: "arraybuffer" }
-        );
+        const res = await api.get(`/recursos/${recurso.id_recurso}/descargar`, {
+          responseType: "arraybuffer",
+        });
         const buffer = res.data;
+        const fileUrl = getFileUrl(recurso.id_recurso);
 
         switch (recurso.tipo) {
           case "PDF":
             setContenido(
-              `<embed src="${recurso.url_origen}" type="application/pdf" width="100%" height="1380" />`
+              `<embed src="${fileUrl}" type="application/pdf" width="100%" height="100%" />`
             );
             break;
-          case "DOCX":
-            const result = await mammoth.convertToHtml({ arrayBuffer: buffer });
-            setContenido(result.value);
+
+          case "DOCX": {
+            const result = await mammoth.convertToHtml({
+              arrayBuffer: buffer,
+            });
+            setContenido(
+              result.value || "<p>No se pudo mostrar el documento.</p>"
+            );
             break;
-          case "XLSX":
+          }
+
+          case "XLSX": {
             const workbook = XLSX.read(buffer, { type: "array" });
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
             const html = XLSX.utils.sheet_to_html(sheet);
             setContenido(html);
             break;
+          }
+
           case "IMAGE":
           case "INFOGRAFIA":
             setContenido(
-              `<img src="${recurso.url_origen}" alt="${recurso.titulo}" style="width:100%;border-radius:10px" />`
+              `<img src="${fileUrl}" alt="${recurso.titulo}" style="width:100%;border-radius:10px" />`
             );
             break;
+
           case "VIDEO":
             setContenido(
-              `<video controls style="width:100%;border-radius:10px"><source src="${recurso.url_origen}" type="video/mp4" /></video>`
+              `<video controls style="width:100%;border-radius:10px">
+                <source src="${fileUrl}" type="video/mp4" />
+              </video>`
             );
             break;
+
           case "AUDIO":
             setContenido(
-              `<audio controls style="width:100%"><source src="${recurso.url_origen}" type="audio/mpeg" /></audio>`
+              `<audio controls style="width:100%">
+                <source src="${fileUrl}" type="audio/mpeg" />
+              </audio>`
             );
             break;
+
           default:
             const text = new TextDecoder("utf-8").decode(buffer);
             setContenido(`<pre>${text}</pre>`);
         }
       } catch (err) {
         console.error("Error al mostrar vista previa:", err);
-        setContenido("<p>Error al cargar contenido.</p>");
+        setContenido("<p>Error al mostrar vista previa.</p>");
       }
     };
 
     cargarVista();
   }, [recurso]);
 
+  // ======================================================
+  // 3. Descargar archivo
+  // ======================================================
   const descargarArchivo = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:4000/api/recursos/${id}/descargar`,
-        { responseType: "blob" }
-      );
+      const response = await api.get(`/recursos/${id}/descargar`, {
+        responseType: "blob",
+      });
+
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", recurso.titulo);
+      link.setAttribute("download", recurso.archivo || recurso.titulo);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } catch {
+    } catch (err) {
+      console.error(err);
       alert("No se pudo descargar el recurso.");
     }
   };
 
-  if (!recurso) return <p>Cargando recurso...</p>;
+  if (!recurso) return <p className="loading">Cargando recurso...</p>;
 
   return (
     <div style={styles.page}>
@@ -103,14 +133,13 @@ function RecursoDetalle() {
         </Link>
       </div>
 
-      {/* === CONTENEDOR PRINCIPAL === */}
       <div style={styles.mainContainer}>
-        {/* Vista principal */}
+        {/* ===================== VISTA PRINCIPAL ===================== */}
         <div style={styles.previewBox}>
           <div dangerouslySetInnerHTML={{ __html: contenido }} />
         </div>
 
-        {/* Panel lateral con info y relacionados */}
+        {/* ===================== PANEL LATERAL ===================== */}
         <div style={styles.sidePanel}>
           <div style={styles.infoBox}>
             <h2 style={styles.title}>{recurso.titulo}</h2>
@@ -121,15 +150,18 @@ function RecursoDetalle() {
             <p>
               <strong>Autor o fuente:</strong> {recurso.autor_fuente}
             </p>
+
             <button onClick={descargarArchivo} style={styles.downloadBtn}>
               ↓ Descargar recurso
             </button>
           </div>
 
+          {/* Panel de recursos relacionados (placeholder por ahora) */}
           <section style={styles.relatedPanel}>
             <h3 style={styles.relatedTitle}>Recursos relacionados</h3>
+
             <div style={styles.relatedGrid}>
-              {[1, 2, 3, 4, 5, 6].map((i) => (
+              {[1, 2, 3, 4].map((i) => (
                 <div key={i} style={styles.relatedCard}>
                   <div style={styles.relatedPreview}></div>
                   <h4 style={styles.relatedText}>Recurso #{i}</h4>
@@ -144,7 +176,7 @@ function RecursoDetalle() {
   );
 }
 
-/* 🎨 ESTILOS MEJORADOS */
+/* 🎨 ESTILOS */
 const styles = {
   page: {
     paddingTop: "5rem",
@@ -158,26 +190,19 @@ const styles = {
     padding: "1rem 2rem",
   },
   backBtn: {
-    display: "inline-block",
     backgroundColor: "#C57A3D",
     color: "white",
-    border: "none",
+    padding: "0.6rem 1rem",
     borderRadius: "8px",
-    padding: "0.5rem 1rem",
     fontWeight: "bold",
     textDecoration: "none",
-    cursor: "pointer",
-    boxShadow: "0 3px 6px rgba(0,0,0,0.25)",
-    transition: "all 0.3s ease",
-    fontSize: "0.9rem",
+    transition: "0.3s",
   },
   mainContainer: {
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "stretch",
-    flexWrap: "wrap",
+    gap: "2rem",
     padding: "1rem 2rem",
-    gap: "1.5rem",
+    flexWrap: "wrap",
   },
   previewBox: {
     flex: "1 1 65%",
@@ -185,7 +210,6 @@ const styles = {
     color: "white",
     borderRadius: "10px",
     padding: "2rem",
-    boxShadow: "0 3px 8px rgba(0,0,0,0.25)",
     overflowY: "auto",
     minHeight: "600px",
     maxHeight: "1380px",
@@ -195,39 +219,32 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: "1.2rem",
-    minHeight: "600px",
   },
   infoBox: {
     backgroundColor: "#5F736A",
     color: "white",
     borderRadius: "10px",
     padding: "1.2rem",
-    boxShadow: "0 3px 8px rgba(0,0,0,0.25)",
-    flexShrink: 0,
   },
   title: {
     color: "#FFDAB3",
     fontWeight: "700",
-    fontSize: "1.3rem",
     marginBottom: "0.5rem",
   },
   downloadBtn: {
     backgroundColor: "#C57A3D",
-    border: "none",
     color: "white",
+    border: "none",
     borderRadius: "8px",
-    padding: "0.8rem 1.2rem",
-    fontWeight: "bold",
+    padding: "0.8rem",
     marginTop: "0.8rem",
     cursor: "pointer",
-    transition: "all 0.3s ease",
-    width: "100%",
+    fontWeight: "bold",
   },
   relatedPanel: {
     backgroundColor: "#5F736A",
     borderRadius: "12px",
     padding: "1.5rem",
-    boxShadow: "0 3px 8px rgba(0,0,0,0.25)",
     flex: 1,
     overflowY: "auto",
   },
@@ -235,7 +252,6 @@ const styles = {
     color: "white",
     textAlign: "center",
     marginBottom: "1rem",
-    fontSize: "1.1rem",
   },
   relatedGrid: {
     display: "grid",
@@ -247,8 +263,6 @@ const styles = {
     borderRadius: "10px",
     padding: "1rem",
     textAlign: "center",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-    transition: "transform 0.3s ease",
   },
   relatedPreview: {
     backgroundColor: "#D9D9D9",
@@ -259,48 +273,14 @@ const styles = {
   relatedText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: "0.9rem",
-    marginBottom: "0.5rem",
   },
   relatedBtn: {
     backgroundColor: "#C57A3D",
     color: "white",
-    border: "none",
-    padding: "0.5rem 1rem",
     borderRadius: "8px",
+    padding: "0.5rem 1rem",
     cursor: "pointer",
-    fontWeight: "bold",
-    transition: "all 0.3s ease",
-    fontSize: "0.85rem",
-    width: "100%",
   },
 };
-
-/* 💡 Hover + Responsive */
-const extraStyles = document.createElement("style");
-extraStyles.innerHTML = `
-  button:hover, a:hover {
-    transform: scale(1.05);
-    background-color: #A86430 !important;
-  }
-
-  @media (max-width: 1024px) {
-    .mainContainer {
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .previewBox, .sidePanel {
-      flex: 100%;
-      min-height: auto !important;
-    }
-
-    .relatedGrid {
-      grid-template-columns: 1fr;
-    }
-  }
-`;
-document.head.appendChild(extraStyles);
 
 export default RecursoDetalle;

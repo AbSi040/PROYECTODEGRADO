@@ -4,32 +4,56 @@ import api from "../services/api";
 
 /**
  * 🚨 AlertSection
- * Muestra las alertas automáticas generadas por el sistema
- * en base a los ratios de comportamiento (sumisión o agresividad).
+ * Muestra alertas automáticas generadas por el sistema.
+ * Actualmente usa datos placeholder porque el backend aún no genera alertas reales.
  */
 
 function AlertSection() {
   const [alertas, setAlertas] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // ======== PLACEHOLDER TEMPORAL ========
+  const alertasPlaceholder = [
+    {
+      nombre: "Estudiante 6A - 12",
+      tipo_alerta: "Riesgo emocional",
+      nivel: "Amarillo",
+    },
+    {
+      nombre: "Estudiante 6B - 4",
+      tipo_alerta: "Conducta impulsiva recurrente",
+      nivel: "Rojo",
+    },
+    {
+      nombre: "Estudiante 6C - 8",
+      tipo_alerta: "Sumisión constante",
+      nivel: "Amarillo",
+    },
+  ];
+
   useEffect(() => {
     const fetchAlertas = async () => {
       try {
-        const res = await api.get("/informes/alertas");
-        setAlertas(res.data || []);
+        // Intentar llamar al backend (aunque no exista el endpoint)
+        await api.get("/informes");
+
+        // Usar placeholder
+        setAlertas(alertasPlaceholder);
       } catch (err) {
-        console.error("Error al cargar alertas:", err);
+        console.warn("⚠ Backend sin alertas, usando placeholder:", err);
+        setAlertas(alertasPlaceholder);
       } finally {
         setLoading(false);
       }
     };
+
     fetchAlertas();
   }, []);
 
   if (loading)
     return (
       <p style={{ textAlign: "center", marginTop: "2rem" }}>
-        Cargando alertas...
+        ⏳ Cargando alertas...
       </p>
     );
 

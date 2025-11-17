@@ -1,43 +1,73 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import api from "../services/api"; // ✅ USO CENTRALIZADO
 import * as mammoth from "mammoth";
 import * as XLSX from "xlsx";
 
 function ResourceGrid() {
   const [recursos, setRecursos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // 🔥 Cargar recursos desde backend en Render
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/api/recursos")
-      .then((res) => setRecursos(res.data))
-      .catch((err) => console.error("Error al cargar recursos:", err));
+    const cargarRecursos = async () => {
+      try {
+        const res = await api.get("/recursos");
+        setRecursos(res.data);
+      } catch (err) {
+        console.error("❌ Error al cargar recursos:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    cargarRecursos();
   }, []);
 
+  if (loading) {
+    return (
+      <p style={{ textAlign: "center", marginTop: "2rem", color: "white" }}>
+        Cargando recursos...
+      </p>
+    );
+  }
+
+  const getPreviewUrl = (recurso) => {
+    return `${import.meta.env.VITE_API_URL}/recursos/${
+      recurso.id_recurso
+    }/archivo`;
+  };
+
   const renderPreview = (r) => {
+    const fileUrl = getPreviewUrl(r);
+
     if (r.tipo === "IMAGE" || r.tipo === "INFOGRAFIA") {
-      return <img src={r.url_origen} alt={r.titulo} style={styles.preview} />;
-    } else if (r.tipo === "VIDEO") {
-      return <video src={r.url_origen} style={styles.preview} controls />;
-    } else if (r.tipo === "PDF") {
-      return (
-        <embed
-          src={r.url_origen}
-          type="application/pdf"
-          style={styles.preview}
-        />
-      );
-    } else if (r.tipo === "AUDIO") {
+      return <img src={fileUrl} alt={r.titulo} style={styles.preview} />;
+    }
+
+    if (r.tipo === "VIDEO") {
+      return <video src={fileUrl} style={styles.preview} controls />;
+    }
+
+    if (r.tipo === "AUDIO") {
       return (
         <audio controls style={{ width: "100%" }}>
-          <source src={r.url_origen} type="audio/mpeg" />
+          <source src={fileUrl} type="audio/mpeg" />
         </audio>
       );
-    } else if (["DOCX", "TXT", "RTF", "ODT", "HTML", "XLSX"].includes(r.tipo)) {
-      return <DocPreview recurso={r} />;
-    } else {
-      return <div style={styles.previewAlt}>📄 {r.tipo}</div>;
     }
+
+    if (r.tipo === "PDF") {
+      return (
+        <embed src={fileUrl} type="application/pdf" style={styles.preview} />
+      );
+    }
+
+    if (["DOCX", "TXT", "RTF", "ODT", "HTML", "XLSX"].includes(r.tipo)) {
+      return <DocPreview recurso={r} url={fileUrl} />;
+    }
+
+    return <div style={styles.previewAlt}>📄 {r.tipo}</div>;
   };
 
   const getIconForType = (tipo) => {
@@ -67,26 +97,22 @@ function ResourceGrid() {
 
   return (
     <section style={styles.grid}>
-      {recursos.slice(0, 15).map(
-        (
-          r // ✅ solo mostrar los primeros 15 recursos
-        ) => (
-          <div key={r.id_recurso} style={styles.card} className="hover-card">
-            {renderPreview(r)}
-            <h3 style={styles.title}>{r.titulo}</h3>
-            <p style={styles.desc}>
-              {r.descripcion_corta || "Sin descripción"}
-            </p>
+      {recursos.slice(0, 15).map((r) => (
+        <div key={r.id_recurso} style={styles.card} className="hover-card">
+          {renderPreview(r)}
 
-            <div style={styles.footer}>
-              <span style={styles.icon}>{getIconForType(r.tipo)}</span>
-              <Link to={`/portal/recurso/${r.id_recurso}`} style={styles.btn}>
-                Ver recurso
-              </Link>
-            </div>
+          <h3 style={styles.title}>{r.titulo}</h3>
+          <p style={styles.desc}>{r.descripcion_corta || "Sin descripción"}</p>
+
+          <div style={styles.footer}>
+            <span style={styles.icon}>{getIconForType(r.tipo)}</span>
+
+            <Link to={`/portal/recurso/${r.id_recurso}`} style={styles.btn}>
+              Ver recurso
+            </Link>
           </div>
-        )
-      )}
+        </div>
+      ))}
 
       {/* Animación hover */}
       <style>
@@ -105,51 +131,36 @@ function ResourceGrid() {
 }
 
 /* 🧠 Componente interno para vista previa de documentos */
-function DocPreview({ recurso }) {
+function DocPreview({ recurso, url }) {
   const [contenido, setContenido] = useState("Cargando vista previa...");
 
   useEffect(() => {
     const cargarVista = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:4000/api/recursos/${recurso.id_recurso}/descargar`,
-          { responseType: "arraybuffer" }
-        );
+        const res = await api.get(`/recursos/${recurso.id_recurso}/descargar`, {
+          responseType: "arraybuffer",
+        });
+
         const buffer = res.data;
 
         switch (recurso.tipo) {
-          case "DOCX":
-            try {
-              const result = await mammoth.convertToHtml({
-                arrayBuffer: buffer,
-              });
-              let textoLimpio = result.value
-                .replace(/<[^>]+>/g, "")
-                .replace(/\s+/g, " ")
-                .trim();
-
-              if (!textoLimpio) {
-                const textoBruto = new TextDecoder("utf-8").decode(buffer);
-                textoLimpio = textoBruto.slice(0, 300);
-              }
-
-              setContenido(
-                textoLimpio
-                  ? textoLimpio.slice(0, 200) + "..."
-                  : "Vista previa no disponible."
-              );
-            } catch (err) {
-              console.error("Error al leer DOCX:", err);
-              setContenido("Error al procesar documento Word.");
-            }
+          case "DOCX": {
+            const result = await mammoth.convertToHtml({ arrayBuffer: buffer });
+            const texto = result.value
+              .replace(/<[^>]+>/g, "")
+              .replace(/\s+/g, " ")
+              .trim()
+              .slice(0, 200);
+            setContenido(texto || "Vista previa no disponible.");
             break;
+          }
 
           case "TXT":
           case "RTF":
           case "ODT":
           case "HTML": {
-            const texto = new TextDecoder("utf-8").decode(buffer);
-            setContenido(texto.slice(0, 200) + "...");
+            const text = new TextDecoder("utf-8").decode(buffer);
+            setContenido(text.slice(0, 200) + "...");
             break;
           }
 
@@ -157,10 +168,11 @@ function DocPreview({ recurso }) {
             const workbook = XLSX.read(buffer, { type: "array" });
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
             const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-            const primerasFilas = rows.slice(0, 3);
-            const htmlPreview = `
+
+            const preview = rows.slice(0, 3);
+            const html = `
               <table border="1" style="border-collapse:collapse;width:100%;font-size:0.8rem;color:#000;">
-                ${primerasFilas
+                ${preview
                   .map(
                     (row) =>
                       `<tr>${row
@@ -168,17 +180,17 @@ function DocPreview({ recurso }) {
                         .join("")}</tr>`
                   )
                   .join("")}
-              </table>`;
-            setContenido(htmlPreview);
+              </table>
+            `;
+            setContenido(html);
             break;
           }
 
           default:
             setContenido("Vista previa no disponible.");
-            break;
         }
       } catch (err) {
-        console.error("Error en vista previa:", err);
+        console.error("❌ Error en vista previa:", err);
         setContenido("Vista previa no disponible.");
       }
     };
@@ -190,14 +202,14 @@ function DocPreview({ recurso }) {
     <div
       style={styles.docPreview}
       dangerouslySetInnerHTML={{ __html: contenido }}
-    ></div>
+    />
   );
 }
 
 const styles = {
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)", // ✅ exactamente 3 columnas
+    gridTemplateColumns: "repeat(3, 1fr)",
     gap: "1.5rem",
     padding: "2rem 5%",
     justifyItems: "center",

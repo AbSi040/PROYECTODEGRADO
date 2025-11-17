@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import api from "../services/api";
 
 /**
- * 👩‍🎓 StudentTable
- * Tabla principal del Panel de la Psicóloga.
- * Muestra lista de estudiantes, progreso global, clúster y observación.
- * Permite acceder al informe individual.
+ * 👩‍🎓 StudentTable (VERSIÓN PRODUCCIÓN)
+ * Funciona sin K-Means, sin progreso real y sin endpoint backend.
+ * Usa datos placeholder mientras no exista la integración real.
  */
 
 function StudentTable() {
@@ -15,19 +14,56 @@ function StudentTable() {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Obtener lista de estudiantes desde el backend
+  // =========================
+  // DATOS PLACEHOLDER
+  // =========================
+  const placeholder = [
+    {
+      id_usuario: 2,
+      nombre: "Estudiante 6A - 12",
+      curso: "6to",
+      paralelo: "A",
+      progreso: 62,
+      cluster: "Reflexivo",
+      observacion: "Tiende a tomar decisiones empáticas.",
+    },
+    {
+      id_usuario: 5,
+      nombre: "Estudiante 6B - 4",
+      curso: "6to",
+      paralelo: "B",
+      progreso: 45,
+      cluster: "Inseguro",
+      observacion: "Muestra vacilación ante situaciones de presión.",
+    },
+    {
+      id_usuario: 7,
+      nombre: "Estudiante 6C - 8",
+      curso: "6to",
+      paralelo: "C",
+      progreso: 30,
+      cluster: "En riesgo",
+      observacion: "Presenta decisiones impulsivas frecuentes.",
+    },
+  ];
+
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchEstudiantes = async () => {
       try {
-        const res = await api.get("/informes/estudiantes");
-        setEstudiantes(res.data);
+        // Intentar pedir algo al backend para evitar caer en 404
+        await api.get("/informes");
+
+        // Asignar placeholder
+        setEstudiantes(placeholder);
       } catch (err) {
-        console.error("Error al cargar estudiantes:", err);
+        console.warn("⚠ No hay datos reales, usando placeholder:", err);
+        setEstudiantes(placeholder);
       } finally {
         setLoading(false);
       }
     };
-    fetchData();
+
+    fetchEstudiantes();
   }, []);
 
   // 🔍 Filtrar por nombre o curso
@@ -89,22 +125,18 @@ function StudentTable() {
                   </td>
 
                   <td style={styles.cell}>{e.curso}</td>
-                  <td style={styles.cell}>{e.paralelo || "—"}</td>
+                  <td style={styles.cell}>{e.paralelo}</td>
 
                   {/* 📊 Progreso */}
                   <td style={styles.cell}>
-                    <strong>{e.progreso || 0}%</strong>
+                    <strong>{e.progreso}%</strong>
                   </td>
 
-                  {/* 🧠 Clúster (color según tipo) */}
-                  <td style={styles.cellCluster(e.cluster)}>
-                    {e.cluster || "—"}
-                  </td>
+                  {/* 🧠 Clúster */}
+                  <td style={styles.cellCluster(e.cluster)}>{e.cluster}</td>
 
                   {/* 💬 Observación */}
-                  <td style={styles.cell}>
-                    {e.observacion || "Sin observación"}
-                  </td>
+                  <td style={styles.cell}>{e.observacion}</td>
                 </tr>
               ))}
             </tbody>
@@ -153,30 +185,26 @@ const styles = {
   },
   headerCell: {
     padding: "1rem",
-    textAlign: "left",
     backgroundColor: "#4a5f57",
     fontWeight: "bold",
-    whiteSpace: "nowrap",
   },
   row: {
     borderBottom: "1px solid rgba(255,255,255,0.1)",
   },
   cell: {
     padding: "0.8rem 1rem",
-    textAlign: "left",
-    verticalAlign: "top",
   },
   link: {
     color: "#FFDAB3",
     fontWeight: "bold",
     textDecoration: "none",
-    transition: "color 0.2s ease",
   },
   cellCluster: (cluster) => ({
     padding: "0.8rem 1rem",
     textAlign: "center",
     fontWeight: "bold",
     color: "white",
+    borderRadius: "6px",
     backgroundColor:
       cluster === "Reflexivo"
         ? "#3d635a"
@@ -185,7 +213,6 @@ const styles = {
         : cluster === "En riesgo"
         ? "#a94442"
         : "#5F736A",
-    borderRadius: "6px",
   }),
 };
 

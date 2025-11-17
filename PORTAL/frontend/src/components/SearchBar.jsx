@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ResourceCard from "./ResourceCard";
+import api from "../services/api"; // ✅ Backend centralizado
 
 function SearchBar() {
   const [query, setQuery] = useState("");
@@ -8,16 +9,24 @@ function SearchBar() {
 
   const handleSearch = async () => {
     if (!query.trim()) return;
+
     setLoading(true);
 
     try {
-      const response = await fetch(
-        `/api/buscar?q=${encodeURIComponent(query)}`
+      // 🔥 Cargar todos los recursos desde el backend
+      const response = await api.get("/recursos");
+
+      const todos = response.data;
+
+      // 🔍 Filtrar en frontend por título
+      const coincidencias = todos.filter((r) =>
+        r.titulo.toLowerCase().includes(query.toLowerCase())
       );
-      const data = await response.json();
-      setResultados(data.resultados || []);
+
+      setResultados(coincidencias);
     } catch (err) {
-      console.error("Error al buscar:", err);
+      console.error("Error al buscar recursos:", err);
+      setResultados([]);
     } finally {
       setLoading(false);
     }
@@ -37,6 +46,7 @@ function SearchBar() {
           borderRadius: "4px",
         }}
       />
+
       <button
         onClick={handleSearch}
         style={{
@@ -55,7 +65,7 @@ function SearchBar() {
       <div style={{ marginTop: "2rem" }}>
         {loading ? (
           <p>Cargando resultados...</p>
-        ) : resultados.length === 0 ? (
+        ) : resultados.length === 0 && query ? (
           <p style={{ color: "#777" }}>No se encontraron coincidencias.</p>
         ) : (
           <div
